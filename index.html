@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My GitHub Pages Site</title>
+  <meta name="description" content="A minimal, fast starter for GitHub Pages.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container">
+      <a class="logo" href="/">▲ MySite</a>
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Hi, I’m <span class="accent">Hyunjae</span>.</h1>
+      <p class="lead">This is a clean, zero‑build GitHub Pages starter you can customize quickly.</p>
+      <div class="cta-row">
+        <a class="btn" href="#projects">See Projects</a>
+        <a class="btn btn-secondary" href="https://github.com/new" target="_blank" rel="noopener">Create a repo</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>Write a short bio here. You can use Markdown-like semantics directly in HTML if you want lists, code, etc.</p>
+      <ul>
+        <li>🎓 Economics PhD student</li>
+        <li>📈 Interested in firm dynamics & innovation</li>
+        <li>🧠 Loves network theory & ML</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Project One</h3>
+          <p>Brief description of your project. Link to a paper, repo, or demo.</p>
+          <p><a href="#" class="inline-link">Open →</a></p>
+        </article>
+        <article class="card">
+          <h3>Project Two</h3>
+          <p>Another project with a short note about tools, data, or results.</p>
+          <p><a href="#" class="inline-link">Open →</a></p>
+        </article>
+        <article class="card">
+          <h3>Teaching</h3>
+          <p>Slides, syllabi, or notes for courses and workshops.</p>
+          <p><a href="#" class="inline-link">Open →</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:you@example.com">you@example.com</a> · GitHub: <a href="https://github.com/yourname">yourname</a> · X: <a href="https://x.com/yourhandle">@yourhandle</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Your Name. Built with GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
