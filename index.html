@@ -1,117 +1,198 @@
 <!doctype html>
-<div class="wrap">
-<div class="container">
-<header id="home" class="hero">
-<h1>Hi, I’m <span style="color:var(--link)">Hyunjae</span>.</h1>
-<p class="lead">Economics PhD student interested in firm & industry dynamics, innovation, and long‑run growth. Methods often draw on industrial organization, macro, networks, and machine learning.</p>
-</header>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hyunjae Lee — Economics</title>
+  <meta name="description" content="Hyunjae Lee — Economics PhD. Research on firm & industry dynamics, innovation, and growth." />
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --panel:#101319;
+      --text:#e7edf3;
+      --muted:#9fb0c3;
+      --link:#6ee7ff;
+      --border:#1b2330;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+      --maxw:900px;
+      --navw:240px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height:1.7;
+      display:flex;
+    }
+    .nav{
+      position:fixed; inset:0 auto 0 0; width:var(--navw);
+      border-right:1px solid var(--border); padding:2rem 1.25rem;
+      display:flex; flex-direction:column; gap:1.25rem;
+      background:linear-gradient(180deg, rgba(16,19,25,.8), rgba(16,19,25,.6));
+      backdrop-filter:saturate(160%) blur(8px);
+    }
+    .brand{font-weight:800; font-size:1.25rem; letter-spacing:.2px}
+    .brand small{display:block; color:var(--muted); font-weight:500}
+    .nav a{color:var(--muted); text-decoration:none; display:block; padding:.35rem 0; border-radius:.4rem}
+    .nav a:hover{color:var(--text)}
+    .nav a.active{color:var(--link); font-weight:700}
+    .nav .social{margin-top:auto; display:flex; gap:.75rem; flex-wrap:wrap}
+    .nav .social a{font-size:.95rem}
+    .wrap{margin-left:var(--navw); width:100%;}
+    .container{max-width:var(--maxw); margin:0 auto; padding:2.5rem 2rem}
+    header.hero{padding:3rem 0 2rem 0}
+    h1{font-size:2.2rem; line-height:1.2; margin:0 0 .5rem 0}
+    .lead{color:var(--muted); max-width:70ch}
+    section{margin:2.5rem 0; background:var(--panel); border:1px solid var(--border); border-radius:1rem; box-shadow:var(--shadow)}
+    section > .section-body{padding:1.5rem}
+    section h2{margin:0 0 .5rem 0; font-size:1.4rem}
+    p{margin:.4rem 0 1rem 0}
+    ul{margin:.5rem 0 1rem 0; padding-left:1.1rem}
+    .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem}
+    .card{background:#0f1218; border:1px solid var(--border); border-radius:.8rem; padding:1rem}
+    a.inline{color:var(--link); text-decoration:none}
+    a.inline:hover{text-decoration:underline}
+    .pub{margin:.6rem 0;}
+    .pub .title{font-weight:700}
+    .pub .meta{color:var(--muted); font-size:.95rem}
+    details.abstract{margin:.5rem 0 1rem 0; padding:.5rem 1rem; border:1px solid var(--border); border-radius:.5rem; background:#0f1218}
+    details.abstract summary{cursor:pointer; font-weight:600; color:var(--link)}
+    @media (max-width: 860px){
+      :root{ --navw:100%; }
+      body{display:block}
+      .nav{position:sticky; top:0; width:100%; border-right:none; border-bottom:1px solid var(--border);}
+      .wrap{margin-left:0}
+      .nav .links{display:flex; gap:1rem; overflow:auto; padding-bottom:.25rem}
+      .nav .social{order:3}
+    }
+  </style>
+</head>
+<body>
+  <aside class="nav">
+    <div class="brand">Hyunjae Lee<small>Economics · UNC‑Chapel Hill</small></div>
+    <nav class="links">
+      <a href="#home" class="active">Home</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="social">
+      <a href="https://github.com/hyunjaelee-econ" class="inline">GitHub</a>
+      <a href="https://scholar.google.com/" class="inline">Scholar</a>
+      <a href="mailto:hyunjae.lee@unc.edu" class="inline">Email (UNC)</a>
+      <a href="mailto:hyunjae.a.lee@gmail.com" class="inline">Email (Gmail)</a>
+    </div>
+  </aside>
 
+  <div class="wrap">
+    <div class="container">
+      <header id="home" class="hero">
+        <h1>Hi, I’m <span style="color:var(--link)">Hyunjae</span>.</h1>
+        <p class="lead">Economics PhD student interested in firm & industry dynamics, innovation, and long‑run growth. Methods often draw on industrial organization, macro, networks, and machine learning.</p>
+      </header>
 
-<section id="research">
-<div class="section-body">
-<h2>Research</h2>
-<p><strong>Fields:</strong> Macroeconomics, Innovation & Growth, Industry Dynamics, Networks, Machine Learning.</p>
-<div class="cards">
-<article class="card">
-<h3>Industry Life Cycles and Aggregate Growth</h3>
-<p>Heterogeneous industry birth/death and firm‑level innovation decisions can generate stable long‑term growth with shifting leaders. <a class="inline" href="#">Draft</a> · <a class="inline" href="#">Slides</a></p>
-</article>
-<article class="card">
-<h3>R&D Races with Endogenous Entry</h3>
-<p>Entry/exit margins interact with technological gaps to shape innovation intensity and welfare. <a class="inline" href="#">Abstract</a></p>
-</article>
-<article class="card">
-<h3>Networks & Productivity Spillovers</h3>
-<p>Supplier‑buyer links and knowledge diffusion in general equilibrium. <a class="inline" href="#">Code</a></p>
-</article>
-</div>
-</div>
-</section>
+      <section id="research">
+        <div class="section-body">
+          <h2>Research</h2>
+          <p><strong>Fields:</strong> Macroeconomics, Innovation & Growth, Industry Dynamics, Networks, Machine Learning.</p>
+          <div class="cards">
+            <article class="card">
+              <h3>Industry Life Cycles and Aggregate Growth</h3>
+              <p>Heterogeneous industry birth/death and firm‑level innovation decisions can generate stable long‑term growth with shifting leaders. <a class="inline" href="#">Draft</a> · <a class="inline" href="#">Slides</a></p>
+            </article>
+            <article class="card">
+              <h3>R&D Races with Endogenous Entry</h3>
+              <p>Entry/exit margins interact with technological gaps to shape innovation intensity and welfare. <a class="inline" href="#">Abstract</a></p>
+            </article>
+            <article class="card">
+              <h3>Networks & Productivity Spillovers</h3>
+              <p>Supplier‑buyer links and knowledge diffusion in general equilibrium. <a class="inline" href="#">Code</a></p>
+            </article>
+          </div>
+        </div>
+      </section>
 
+      <section id="publications">
+        <div class="section-body">
+          <h2>Publications & Works in Progress</h2>
+          <div class="pub">
+            <div class="title">Endogenous Growth with Industry Dynamics</div>
+            <div class="meta">Working paper.
+              <a class="inline" href="papers/endogenous-growth-industry-dynamics.pdf">PDF</a>
+            </div>
+            <details class="abs" style="margin-top:.4rem">
+              <summary style="cursor:pointer">Abstract</summary>
+              <p style="margin-top:.5rem">[Add 150–250 word abstract here. Example placeholder: This paper develops a growth model where overlapping industry life cycles and firm-level innovation decisions jointly produce stable aggregate growth with shifting leadership. Entry and exit margins respond to technological gaps, shaping R&D intensity, markups, and welfare. The model matches facts on industry turnover and predicts policy-dependent reallocation effects.]</p>
+            </details>
+          </div>
+        </div>
+      </section>
 
-<section id="publications">
-<div class="section-body">
-<h2>Publications & Works in Progress</h2>
-<div class="pub">
-<div class="title">Endogenous Growth with Industry Dynamics</div>
-<div class="meta">Working paper.
-<a class="inline" href="papers/endogenous-growth-industry-dynamics.pdf">PDF</a>
-</div>
-<details class="abs" style="margin-top:.4rem">
-<summary style="cursor:pointer">Abstract</summary>
-<p style="margin-top:.5rem">[Add 150–250 word abstract here. Example placeholder: This paper develops a growth model where overlapping industry life cycles and firm-level innovation decisions jointly produce stable aggregate growth with shifting leadership. Entry and exit margins respond to technological gaps, shaping R&D intensity, markups, and welfare. The model matches facts on industry turnover and predicts policy-dependent reallocation effects.]</p>
-</details>
-</div>
-</div>
-</section>
+      <section id="teaching">
+        <div class="section-body">
+          <h2>Teaching</h2>
+          <ul>
+            <li><strong>ECON 720: Macroeconomic Theory</strong> — TA. Recitations on Solow growth, midterm reviews, problem set clinics.</li>
+            <li>Guest lectures: Innovation & growth; industry dynamics.</li>
+          </ul>
+          <p>Selected materials: <a class="inline" href="#">Slides</a> · <a class="inline" href="#">Problem sets</a> · <a class="inline" href="#">Notes</a></p>
+        </div>
+      </section>
 
+      <section id="cv">
+        <div class="section-body">
+          <h2>CV</h2>
+          <p>PDF will be added soon. When ready, place <code>cv.pdf</code> in the repo root and this link will work: <a class="inline" href="cv.pdf">Download CV (PDF)</a>.</p>
+          <ul>
+            <li><strong>PhD, Economics</strong>, UNC‑Chapel Hill (expected YEAR)</li>
+            <li>Fields: macroeconomics, innovation, IO, networks, ML</li>
+            <li>Skills: Python, R, Julia, MATLAB, Stata, LaTeX</li>
+          </ul>
+        </div>
+      </section>
 
-<section id="teaching">
-<div class="section-body">
-<h2>Teaching</h2>
-<ul>
-<li><strong>ECON 720: Macroeconomic Theory</strong> — TA. Recitations on Solow growth, midterm reviews, problem set clinics.</li>
-<li>Guest lectures: Innovation & growth; industry dynamics.</li>
-</ul>
-<p>Selected materials: <a class="inline" href="#">Slides</a> · <a class="inline" href="#">Problem sets</a> · <a class="inline" href="#">Notes</a></p>
-</div>
-</section>
+      <section id="contact">
+        <div class="section-body">
+          <h2>Contact</h2>
+          <p>Email: <a class="inline" href="mailto:hyunjae.lee@unc.edu">hyunjae.lee@unc.edu</a> · <a class="inline" href="mailto:hyunjae.a.lee@gmail.com">hyunjae.a.lee@gmail.com</a></p>
+          <p>GitHub: <a class="inline" href="https://github.com/hyunjaelee-econ">github.com/hyunjaelee-econ</a></p>
+          <p>Office: Department of Economics, UNC‑Chapel Hill</p>
+        </div>
+      </section>
 
+      <footer style="color:var(--muted); margin:2rem 0 1rem 0; font-size:.95rem">
+        © <span id="year"></span> Hyunjae Lee
+      </footer>
+    </div>
+  </div>
 
-<section id="cv">
-<div class="section-body">
-<h2>CV</h2>
-<p>PDF will be added soon. When ready, place <code>cv.pdf</code> in the repo root and this link will work: <a class="inline" href="cv.pdf">Download CV (PDF)</a>.</p>
-<ul>
-<li><strong>PhD, Economics</strong>, UNC‑Chapel Hill (expected YEAR)</li>
-<li>Fields: macroeconomics, innovation, IO, networks, ML</li>
-<li>Skills: Python, R, Julia, MATLAB, Stata, LaTeX</li>
-</ul>
-</div>
-</section>
-
-
-<section id="contact">
-<div class="section-body">
-<h2>Contact</h2>
-<p>Email: <a class="inline" href="mailto:hyunjae.lee@unc.edu">hyunjae.lee@unc.edu</a> · <a class="inline" href="mailto:hyunjae.a.lee@gmail.com">hyunjae.a.lee@gmail.com</a></p>
-<p>GitHub: <a class="inline" href="https://github.com/hyunjaelee-econ">github.com/hyunjaelee-econ</a></p>
-<p>Office: Department of Economics, UNC‑Chapel Hill</p>
-</div>
-</section>
-
-
-<footer style="color:var(--muted); margin:2rem 0 1rem 0; font-size:.95rem">
-© <span id="year"></span> Hyunjae Lee
-</footer>
-</div>
-</div>
-
-
-<script>
-const links = document.querySelectorAll('.nav a');
-links.forEach(a=>{
-a.addEventListener('click', e=>{
-if(a.hash){
-e.preventDefault();
-document.querySelector(a.hash).scrollIntoView({behavior:'smooth', block:'start'});
-history.replaceState(null, '', a.hash);
-}
-});
-});
-const sections = [...document.querySelectorAll('section, header.hero')];
-const byId = id => [...links].find(a => a.getAttribute('href') === '#'+id);
-const io = new IntersectionObserver(entries => {
-entries.forEach(e=>{
-if(e.isIntersecting){
-const id = e.target.id || 'home';
-links.forEach(a=>a.classList.remove('active'));
-const el = byId(id); if(el) el.classList.add('active');
-}
-})
-},{rootMargin:'-40% 0px -50% 0px', threshold:0});
-sections.forEach(s=>io.observe(s));
-document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+  <script>
+    const links = document.querySelectorAll('.nav a');
+    links.forEach(a=>{
+      a.addEventListener('click', e=>{
+        if(a.hash){
+          e.preventDefault();
+          document.querySelector(a.hash).scrollIntoView({behavior:'smooth', block:'start'});
+          history.replaceState(null, '', a.hash);
+        }
+      });
+    });
+    const sections = [...document.querySelectorAll('section, header.hero')];
+    const byId = id => [...links].find(a => a.getAttribute('href') === '#'+id);
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const id = e.target.id || 'home';
+          links.forEach(a=>a.classList.remove('active'));
+          const el = byId(id); if(el) el.classList.add('active');
+        }
+      })
+    },{rootMargin:'-40% 0px -50% 0px', threshold:0});
+    sections.forEach(s=>io.observe(s));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
