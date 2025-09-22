@@ -1,80 +1,117 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My GitHub Pages Site</title>
-  <meta name="description" content="A minimal, fast starter for GitHub Pages.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-  <header class="site-header">
-    <nav class="container">
-      <a class="logo" href="/">▲ MySite</a>
-      <a class="nav-link" href="#about">About</a>
-      <a class="nav-link" href="#projects">Projects</a>
-      <a class="nav-link" href="#contact">Contact</a>
-    </nav>
-  </header>
+<div class="wrap">
+<div class="container">
+<header id="home" class="hero">
+<h1>Hi, I’m <span style="color:var(--link)">Hyunjae</span>.</h1>
+<p class="lead">Economics PhD student interested in firm & industry dynamics, innovation, and long‑run growth. Methods often draw on industrial organization, macro, networks, and machine learning.</p>
+</header>
 
-  <main class="container">
-    <section class="hero">
-      <h1>Hi, I’m <span class="accent">Hyunjae</span>.</h1>
-      <p class="lead">This is a clean, zero‑build GitHub Pages starter you can customize quickly.</p>
-      <div class="cta-row">
-        <a class="btn" href="#projects">See Projects</a>
-        <a class="btn btn-secondary" href="https://github.com/new" target="_blank" rel="noopener">Create a repo</a>
-      </div>
-    </section>
 
-    <section id="about">
-      <h2>About</h2>
-      <p>Write a short bio here. You can use Markdown-like semantics directly in HTML if you want lists, code, etc.</p>
-      <ul>
-        <li>🎓 Economics PhD student</li>
-        <li>📈 Interested in firm dynamics & innovation</li>
-        <li>🧠 Loves network theory & ML</li>
-      </ul>
-    </section>
+<section id="research">
+<div class="section-body">
+<h2>Research</h2>
+<p><strong>Fields:</strong> Macroeconomics, Innovation & Growth, Industry Dynamics, Networks, Machine Learning.</p>
+<div class="cards">
+<article class="card">
+<h3>Industry Life Cycles and Aggregate Growth</h3>
+<p>Heterogeneous industry birth/death and firm‑level innovation decisions can generate stable long‑term growth with shifting leaders. <a class="inline" href="#">Draft</a> · <a class="inline" href="#">Slides</a></p>
+</article>
+<article class="card">
+<h3>R&D Races with Endogenous Entry</h3>
+<p>Entry/exit margins interact with technological gaps to shape innovation intensity and welfare. <a class="inline" href="#">Abstract</a></p>
+</article>
+<article class="card">
+<h3>Networks & Productivity Spillovers</h3>
+<p>Supplier‑buyer links and knowledge diffusion in general equilibrium. <a class="inline" href="#">Code</a></p>
+</article>
+</div>
+</div>
+</section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Project One</h3>
-          <p>Brief description of your project. Link to a paper, repo, or demo.</p>
-          <p><a href="#" class="inline-link">Open →</a></p>
-        </article>
-        <article class="card">
-          <h3>Project Two</h3>
-          <p>Another project with a short note about tools, data, or results.</p>
-          <p><a href="#" class="inline-link">Open →</a></p>
-        </article>
-        <article class="card">
-          <h3>Teaching</h3>
-          <p>Slides, syllabi, or notes for courses and workshops.</p>
-          <p><a href="#" class="inline-link">Open →</a></p>
-        </article>
-      </div>
-    </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:you@example.com">you@example.com</a> · GitHub: <a href="https://github.com/yourname">yourname</a> · X: <a href="https://x.com/yourhandle">@yourhandle</a></p>
-    </section>
-  </main>
+<section id="publications">
+<div class="section-body">
+<h2>Publications & Works in Progress</h2>
+<div class="pub">
+<div class="title">Endogenous Growth with Industry Dynamics</div>
+<div class="meta">Working paper.
+<a class="inline" href="papers/endogenous-growth-industry-dynamics.pdf">PDF</a>
+</div>
+<details class="abs" style="margin-top:.4rem">
+<summary style="cursor:pointer">Abstract</summary>
+<p style="margin-top:.5rem">[Add 150–250 word abstract here. Example placeholder: This paper develops a growth model where overlapping industry life cycles and firm-level innovation decisions jointly produce stable aggregate growth with shifting leadership. Entry and exit margins respond to technological gaps, shaping R&D intensity, markups, and welfare. The model matches facts on industry turnover and predicts policy-dependent reallocation effects.]</p>
+</details>
+</div>
+</div>
+</section>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> Your Name. Built with GitHub Pages.</p>
-    </div>
-  </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<section id="teaching">
+<div class="section-body">
+<h2>Teaching</h2>
+<ul>
+<li><strong>ECON 720: Macroeconomic Theory</strong> — TA. Recitations on Solow growth, midterm reviews, problem set clinics.</li>
+<li>Guest lectures: Innovation & growth; industry dynamics.</li>
+</ul>
+<p>Selected materials: <a class="inline" href="#">Slides</a> · <a class="inline" href="#">Problem sets</a> · <a class="inline" href="#">Notes</a></p>
+</div>
+</section>
+
+
+<section id="cv">
+<div class="section-body">
+<h2>CV</h2>
+<p>PDF will be added soon. When ready, place <code>cv.pdf</code> in the repo root and this link will work: <a class="inline" href="cv.pdf">Download CV (PDF)</a>.</p>
+<ul>
+<li><strong>PhD, Economics</strong>, UNC‑Chapel Hill (expected YEAR)</li>
+<li>Fields: macroeconomics, innovation, IO, networks, ML</li>
+<li>Skills: Python, R, Julia, MATLAB, Stata, LaTeX</li>
+</ul>
+</div>
+</section>
+
+
+<section id="contact">
+<div class="section-body">
+<h2>Contact</h2>
+<p>Email: <a class="inline" href="mailto:hyunjae.lee@unc.edu">hyunjae.lee@unc.edu</a> · <a class="inline" href="mailto:hyunjae.a.lee@gmail.com">hyunjae.a.lee@gmail.com</a></p>
+<p>GitHub: <a class="inline" href="https://github.com/hyunjaelee-econ">github.com/hyunjaelee-econ</a></p>
+<p>Office: Department of Economics, UNC‑Chapel Hill</p>
+</div>
+</section>
+
+
+<footer style="color:var(--muted); margin:2rem 0 1rem 0; font-size:.95rem">
+© <span id="year"></span> Hyunjae Lee
+</footer>
+</div>
+</div>
+
+
+<script>
+const links = document.querySelectorAll('.nav a');
+links.forEach(a=>{
+a.addEventListener('click', e=>{
+if(a.hash){
+e.preventDefault();
+document.querySelector(a.hash).scrollIntoView({behavior:'smooth', block:'start'});
+history.replaceState(null, '', a.hash);
+}
+});
+});
+const sections = [...document.querySelectorAll('section, header.hero')];
+const byId = id => [...links].find(a => a.getAttribute('href') === '#'+id);
+const io = new IntersectionObserver(entries => {
+entries.forEach(e=>{
+if(e.isIntersecting){
+const id = e.target.id || 'home';
+links.forEach(a=>a.classList.remove('active'));
+const el = byId(id); if(el) el.classList.add('active');
+}
+})
+},{rootMargin:'-40% 0px -50% 0px', threshold:0});
+sections.forEach(s=>io.observe(s));
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
