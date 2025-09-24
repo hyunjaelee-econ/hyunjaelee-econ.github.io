@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hyunjae Lee</title>
   <meta name="description" content="Hyunjae Lee — Economics PhD. Research on firm & industry dynamics, innovation, and growth." />
+  <link rel="icon" type="image/png" href="assets/favicon.png">
   <style>
     :root{
       --bg:#ffffff;
@@ -35,8 +36,6 @@
     .nav a{color:var(--text); text-decoration:none; display:block; padding:.35rem 0; border-radius:.2rem; opacity:.85}
     .nav a:hover{opacity:1}
     .nav a.active{font-weight:700; text-decoration:underline}
-    .nav .social{margin-top:auto; display:flex; gap:.75rem; flex-wrap:wrap}
-    .nav .social a{font-size:.95rem}
     .wrap{margin-left:var(--navw); width:100%;}
     .container{max-width:var(--maxw); margin:0 auto; padding:2.5rem 2rem}
     h1{font-size:2.2rem; line-height:1.2; margin:0 0 .5rem 0}
@@ -86,16 +85,10 @@
   <aside class="nav">
     <div class="brand">Hyunjae Lee<small>Economics · UNC‑Chapel Hill</small></div>
     <nav class="links">
-      <a href="#about" class="active">About</a>
+      <a href="#about">About</a>
       <a href="#research">Research</a>
       <a href="#teaching">Teaching</a>
     </nav>
-    <div class="social">
-      <a href="https://github.com/hyunjaelee-econ" class="inline">GitHub</a>
-      <a href="https://scholar.google.com/" class="inline">Scholar</a>
-      <a href="mailto:hyunjae.lee@unc.edu" class="inline">Email (UNC)</a>
-      <a href="mailto:hyunjae.a.lee@gmail.com" class="inline">Email (Gmail)</a>
-    </div>
   </aside>
 
   <div class="wrap">
@@ -146,36 +139,46 @@
   </div>
 
   <script>
-    const links = document.querySelectorAll('.nav a');
-links.forEach(a=>{
-  a.addEventListener('click', e=>{
-    if(a.hash){
-      e.preventDefault();
-      document.querySelector(a.hash).scrollIntoView({behavior:'smooth', block:'start'});
-      history.replaceState(null, '', a.hash);
+  const links = Array.from(document.querySelectorAll('.nav a'));
+  const sections = Array.from(document.querySelectorAll('section'));
+
+  // Smooth-scroll and set active immediately on click
+  links.forEach(a => {
+    a.addEventListener('click', e => {
+      if (a.hash) {
+        e.preventDefault();
+        const target = document.querySelector(a.hash);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.replaceState(null, '', a.hash);
+          // Immediately mark the clicked link active
+          links.forEach(l => l.classList.toggle('active', l === a));
+        }
+      }
+    });
+  });
+
+  // Scrollspy: highlight the section currently under a fixed offset
+  function setActiveOnScroll() {
+    const y = 120; // pixels from top to test (tweak if needed)
+    let current = sections[0].id;
+    for (const s of sections) {
+      const r = s.getBoundingClientRect();
+      if (r.top <= y && r.bottom >= y) { current = s.id; break; }
     }
-  });
-});
-
-// Replace IntersectionObserver with a more stable scrollspy so the *correct* nav item stays highlighted
-const sections = [...document.querySelectorAll('section')];
-function setActive(){
-  const pos = window.scrollY + window.innerHeight * 0.25; // look a bit below the top
-  let currentId = sections[0]?.id;
-  for(const s of sections){
-    if(pos >= s.offsetTop - 1) currentId = s.id;
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
   }
-  links.forEach(a=>{
-    const match = a.getAttribute('href') === '#' + currentId;
-    a.classList.toggle('active', match);
-  });
-}
-window.addEventListener('scroll', setActive, {passive:true});
-window.addEventListener('resize', setActive);
-window.addEventListener('load', setActive);
-setActive();
 
-document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  // On load: jump to hash (if any) and set correct active link
+  window.addEventListener('load', () => {
+    if (location.hash && document.querySelector(location.hash)) {
+      document.querySelector(location.hash).scrollIntoView();
+    }
+    setActiveOnScroll();
+  });
+
+  window.addEventListener('scroll', setActiveOnScroll, { passive: true });
+  window.addEventListener('resize', setActiveOnScroll);
+</script>
 </body>
 </html>
