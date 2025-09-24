@@ -62,7 +62,24 @@
       .nav .links{display:flex; gap:1rem; overflow:auto; padding-bottom:.25rem}
       .nav .social{order:3}
     }
-    .about-photo{max-width:180px; border-radius:50%; margin:1rem 0; border:1px solid var(--border)}
+    .about-photo{
+      width:180px;
+      aspect-ratio:4/3;
+      object-fit:cover;
+      border-radius:0;
+      margin:0;
+      border:1px solid var(--border);
+    }
+    .about{
+      display:grid;
+      grid-template-columns:180px 1fr;
+      gap:1.25rem;
+      align-items:start;
+    }
+    .about .bio p:first-child{margin-top:0}
+    @media (max-width: 680px){
+      .about{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
@@ -86,11 +103,15 @@
       <section id="about">
         <div class="section-body">
           <h2>About</h2>
-          <img src="assets/profile.jpg" alt="Hyunjae Lee" class="about-photo">
-          <p>I am an Economics PhD student at UNC‑Chapel Hill interested in firm and industry dynamics, innovation, and long‑run growth. My work combines industrial organization, macroeconomics, networks, and machine learning.</p>
-          <p>Email: <a class="inline" href="mailto:hyunjae.lee@unc.edu">hyunjae.lee@unc.edu</a> · <a class="inline" href="mailto:hyunjae.a.lee@gmail.com">hyunjae.a.lee@gmail.com</a></p>
-          <p>GitHub: <a class="inline" href="https://github.com/hyunjaelee-econ">github.com/hyunjaelee-econ</a></p>
-          <p><a class="inline" href="cv.pdf">Download CV (PDF)</a> (upload <code>cv.pdf</code> to repo when ready)</p>
+          <div class="about">
+            <img src="your-photo.jpg" alt="Hyunjae Lee" class="about-photo">
+            <div class="bio">
+              <p>I am an Economics PhD student at UNC-Chapel Hill interested in firm and industry dynamics, innovation, and long-run growth.</p>
+              <p>Email: <a class="inline" href="mailto:hyunjae.lee@unc.edu">hyunjae.lee@unc.edu</a> · <a class="inline" href="mailto:hyunjae.a.lee@gmail.com">hyunjae.a.lee@gmail.com</a></p>
+              <p>GitHub: <a class="inline" href="https://github.com/hyunjaelee-econ">github.com/hyunjaelee-econ</a></p>
+              <p><a class="inline" href="cv.pdf">Download CV (PDF)</a> (upload <code>cv.pdf</code> to repo when ready)</p>
+            </div>
+          </div>
         </div>
       </section>
 
