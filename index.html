@@ -1,102 +1,161 @@
 <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hyunjae Lee — Economics</title>
+  <meta name="description" content="Hyunjae Lee — Economics PhD. Research on firm & industry dynamics, innovation, and growth." />
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --panel:#101319;
+      --text:#e7edf3;
+      --muted:#9fb0c3;
+      --link:#6ee7ff;
+      --border:#1b2330;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+      --maxw:900px;
+      --navw:240px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height:1.7;
+      display:flex;
+    }
+    .nav{
+      position:fixed; inset:0 auto 0 0; width:var(--navw);
+      border-right:1px solid var(--border); padding:2rem 1.25rem;
+      display:flex; flex-direction:column; gap:1.25rem;
+      background:linear-gradient(180deg, rgba(16,19,25,.8), rgba(16,19,25,.6));
+      backdrop-filter:saturate(160%) blur(8px);
+    }
+    .brand{font-weight:800; font-size:1.25rem; letter-spacing:.2px}
+    .brand small{display:block; color:var(--muted); font-weight:500}
+    .nav a{color:var(--muted); text-decoration:none; display:block; padding:.35rem 0; border-radius:.4rem}
+    .nav a:hover{color:var(--text)}
+    .nav a.active{color:var(--link); font-weight:700}
+    .nav .social{margin-top:auto; display:flex; gap:.75rem; flex-wrap:wrap}
+    .nav .social a{font-size:.95rem}
+    .wrap{margin-left:var(--navw); width:100%;}
+    .container{max-width:var(--maxw); margin:0 auto; padding:2.5rem 2rem}
+    h1{font-size:2.2rem; line-height:1.2; margin:0 0 .5rem 0}
+    .lead{color:var(--muted); max-width:70ch}
+    section{margin:2.5rem 0; background:var(--panel); border:1px solid var(--border); border-radius:1rem; box-shadow:var(--shadow)}
+    section > .section-body{padding:1.5rem}
+    section h2{margin:0 0 .5rem 0; font-size:1.4rem}
+    p{margin:.4rem 0 1rem 0}
+    ul{margin:.5rem 0 1rem 0; padding-left:1.1rem}
+    a.inline{color:var(--link); text-decoration:none}
+    a.inline:hover{text-decoration:underline}
+    .pub{margin:.6rem 0;}
+    .pub .title{font-weight:700}
+    .pub .meta{color:var(--muted); font-size:.95rem}
+    details.abstract{margin:.5rem 0 1rem 0; padding:.5rem 1rem; border:1px solid var(--border); border-radius:.5rem; background:#0f1218}
+    details.abstract summary{cursor:pointer; font-weight:600; color:var(--link)}
+    @media (max-width: 860px){
+      :root{ --navw:100%; }
+      body{display:block}
+      .nav{position:sticky; top:0; width:100%; border-right:none; border-bottom:1px solid var(--border);}
+      .wrap{margin-left:0}
+      .nav .links{display:flex; gap:1rem; overflow:auto; padding-bottom:.25rem}
+      .nav .social{order:3}
+    }
+    .about-photo{max-width:180px; border-radius:50%; margin:1rem 0;}
+  </style>
 </head>
 <body>
-<aside class="nav">
-<div class="brand">Hyunjae Lee<small>Economics · UNC‑Chapel Hill</small></div>
-<nav class="links">
-<a href="#about" class="active">About</a>
-<a href="#research">Research</a>
-<a href="#teaching">Teaching</a>
-</nav>
-<div class="social">
-<a href="https://github.com/hyunjaelee-econ" class="inline">GitHub</a>
-<a href="https://scholar.google.com/" class="inline">Scholar</a>
-<a href="mailto:hyunjae.lee@unc.edu" class="inline">Email (UNC)</a>
-<a href="mailto:hyunjae.a.lee@gmail.com" class="inline">Email (Gmail)</a>
-</div>
-</aside>
+  <aside class="nav">
+    <div class="brand">Hyunjae Lee<small>Economics · UNC‑Chapel Hill</small></div>
+    <nav class="links">
+      <a href="#about" class="active">About</a>
+      <a href="#research">Research</a>
+      <a href="#teaching">Teaching</a>
+    </nav>
+    <div class="social">
+      <a href="https://github.com/hyunjaelee-econ" class="inline">GitHub</a>
+      <a href="https://scholar.google.com/" class="inline">Scholar</a>
+      <a href="mailto:hyunjae.lee@unc.edu" class="inline">Email (UNC)</a>
+      <a href="mailto:hyunjae.a.lee@gmail.com" class="inline">Email (Gmail)</a>
+    </div>
+  </aside>
 
+  <div class="wrap">
+    <div class="container">
+      <section id="about">
+        <div class="section-body">
+          <h2>About</h2>
+          <img src="your-photo.jpg" alt="Hyunjae Lee" class="about-photo">
+          <p>I am an Economics PhD student at UNC‑Chapel Hill interested in firm and industry dynamics, innovation, and long‑run growth. My work combines industrial organization, macroeconomics, networks, and machine learning.</p>
+          <p>Email: <a class="inline" href="mailto:hyunjae.lee@unc.edu">hyunjae.lee@unc.edu</a> · <a class="inline" href="mailto:hyunjae.a.lee@gmail.com">hyunjae.a.lee@gmail.com</a></p>
+          <p>GitHub: <a class="inline" href="https://github.com/hyunjaelee-econ">github.com/hyunjaelee-econ</a></p>
+          <p><a class="inline" href="cv.pdf">Download CV (PDF)</a> (upload <code>cv.pdf</code> to repo when ready)</p>
+        </div>
+      </section>
 
-<div class="wrap">
-<div class="container">
-<section id="about">
-<div class="section-body">
-<h2>About</h2>
-<img src="your-photo.jpg" alt="Hyunjae Lee" class="about-photo">
-<p>I am an Economics PhD student at UNC‑Chapel Hill interested in firm and industry dynamics, innovation, and long‑run growth. My work combines industrial organization, macroeconomics, networks, and machine learning.</p>
-<p>Email: <a class="inline" href="mailto:hyunjae.lee@unc.edu">hyunjae.lee@unc.edu</a> · <a class="inline" href="mailto:hyunjae.a.lee@gmail.com">hyunjae.a.lee@gmail.com</a></p>
-<p>GitHub: <a class="inline" href="https://github.com/hyunjaelee-econ">github.com/hyunjaelee-econ</a></p>
-<p><a class="inline" href="cv.pdf">Download CV (PDF)</a> (upload <code>cv.pdf</code> to repo when ready)</p>
-</div>
-</section>
+      <section id="research">
+        <div class="section-body">
+          <h2>Research</h2>
+          <div class="pub">
+            <div class="title">Endogenous Growth with Industry Dynamics</div>
+            <div class="meta">Working paper. <a class="inline" href="papers/endogenous-growth-industry-dynamics.pdf">PDF</a></div>
+            <details class="abstract">
+              <summary>Abstract</summary>
+              <p>[Add 150–250 word abstract here.]</p>
+            </details>
+          </div>
+        </div>
+      </section>
 
+      <section id="teaching">
+        <div class="section-body">
+          <h2>Teaching</h2>
+          <ul>
+            <li><strong>ECON 720: Macroeconomic Theory</strong> — Teaching Assistant, Fall 2024</li>
+            <li><strong>ECON 410: Intermediate Microeconomics</strong> — Teaching Assistant, Spring 2024</li>
+          </ul>
+        </div>
+      </section>
 
-<section id="research">
-<div class="section-body">
-<h2>Research</h2>
-<div class="pub">
-<div class="title">Endogenous Growth with Industry Dynamics</div>
-<div class="meta">Working paper. <a class="inline" href="papers/endogenous-growth-industry-dynamics.pdf">PDF</a></div>
-<details class="abstract">
-<summary>Abstract</summary>
-<p>[Add 150–250 word abstract here.]</p>
-</details>
-</div>
-</div>
-</section>
+      <footer style="color:var(--muted); margin:2rem 0 1rem 0; font-size:.95rem">
+        © <span id="year"></span> Hyunjae Lee
+      </footer>
+    </div>
+  </div>
 
-
-<section id="teaching">
-<div class="section-body">
-<h2>Teaching</h2>
-<ul>
-<li><strong>ECON 720: Macroeconomic Theory</strong> — Teaching Assistant, Fall 2024</li>
-<li><strong>ECON 410: Intermediate Microeconomics</strong> — Teaching Assistant, Spring 2024</li>
-</ul>
-</div>
-</section>
-
-
-<footer style="color:var(--muted); margin:2rem 0 1rem 0; font-size:.95rem">
-© <span id="year"></span> Hyunjae Lee
-</footer>
-</div>
-</div>
-
-
-<script>
-const links = document.querySelectorAll('.nav a');
+  <script>
+    const links = document.querySelectorAll('.nav a');
 links.forEach(a=>{
-a.addEventListener('click', e=>{
-if(a.hash){
-e.preventDefault();
-document.querySelector(a.hash).scrollIntoView({behavior:'smooth', block:'start'});
-history.replaceState(null, '', a.hash);
-}
+  a.addEventListener('click', e=>{
+    if(a.hash){
+      e.preventDefault();
+      document.querySelector(a.hash).scrollIntoView({behavior:'smooth', block:'start'});
+      history.replaceState(null, '', a.hash);
+    }
+  });
 });
-});
-
 
 // Replace IntersectionObserver with a more stable scrollspy so the *correct* nav item stays highlighted
 const sections = [...document.querySelectorAll('section')];
 function setActive(){
-const pos = window.scrollY + window.innerHeight * 0.25; // look a bit below the top
-let currentId = sections[0]?.id;
-for(const s of sections){
-if(pos >= s.offsetTop - 1) currentId = s.id;
-}
-links.forEach(a=>{
-const match = a.getAttribute('href') === '#' + currentId;
-a.classList.toggle('active', match);
-});
+  const pos = window.scrollY + window.innerHeight * 0.25; // look a bit below the top
+  let currentId = sections[0]?.id;
+  for(const s of sections){
+    if(pos >= s.offsetTop - 1) currentId = s.id;
+  }
+  links.forEach(a=>{
+    const match = a.getAttribute('href') === '#' + currentId;
+    a.classList.toggle('active', match);
+  });
 }
 window.addEventListener('scroll', setActive, {passive:true});
 window.addEventListener('resize', setActive);
 window.addEventListener('load', setActive);
 setActive();
 
-
 document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+  </script>
 </body>
 </html>
