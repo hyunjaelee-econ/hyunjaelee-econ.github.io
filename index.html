@@ -61,10 +61,17 @@
     }
     .pub .meta{color:var(--muted); font-size:.9rem}
     .pub-header{display:flex; align-items:baseline; gap:.75rem; flex-wrap:wrap}
-    .pub-header .meta{color:var(--muted); font-size:.95rem}
-    details.abstract{margin:.5rem 0 1rem 0; padding:0}
-    details.abstract summary{cursor:pointer; font-weight:600; color:var(--link)}
-    details.abstract summary:hover{text-decoration:underline}
+    .pub-header .meta{color:var(--muted); font-size:.9rem}
+    .abstract-toggle{
+      appearance:none;  background:none;  border:0;
+      padding:0;  color:var(--link);  font:inherit;
+      font-weight:600;  cursor:pointer;
+    }
+    .abstract-toggle:hover{text-decoration:underline;}
+    .abstract-toggle::after{content:" ▾"; font-size:.8em;}
+    .abstract-toggle[aria-expanded="true"]::after{content:" ▴";}
+    .abstract-text{font-size:.9rem; margin:.35rem 0 .5rem;}
+    .abstract-text p{margin:0;}
     @media (max-width: 860px){
       :root{ --navw:100%; }
       body{display:block}
@@ -123,19 +130,51 @@
           <h2 style="color:#13294B">Working Papers</h2>
           <div class="pub">
             <div class="pub-header">
-              <div class="title">Growth with Endogenous Industry Dynamics</div>
-                <a class="inline" href="papers/growth-with-endogenous-industry-dynamics.pdf">PDF</a>
+              <a
+                class="title inline"
+                href="papers/growth-with-endogenous-industry-dynamics.pdf"
+              >
+                Growth with Endogenous Industry Dynamics
+              </a>
+          
+              <button
+                class="abstract-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="growth-abstract"
+              >
+                Abstract
+              </button>
+          
               <span class="meta">
                 <span class="date">August 2026</span>
               </span>
             </div>
-            <div class="presented-at">
-              Presented at: NASM ES (2026); CEA (2026); Spring Midwest Macro (2026); I-85 Macro Workshop (2025); EGSC, WUSTL (2025); Tiago Pires Graduate Student Conference, UNC (2025)<br>
+          
+            <div class="abstract-text" id="growth-abstract" hidden>
+              <p>
+                Steady aggregate growth coexists with non-stationary industry life
+                cycles. A Schumpeterian growth model generates this coexistence as
+                potential entrants choose between joining an existing industry and
+                creating a new one. Individual industries follow endogenous life
+                cycles, yet their stationary cross-section sustains steady growth and
+                decomposes it into variety creation, frontier innovation, and follower
+                catch-up. Calibrated to U.S. data, the model implies that growth is
+                U-shaped in the firm-entry rate, with the economy on the
+                downward-sloping segment. At the calibrated equilibrium, a constrained
+                planner locally favors more industry creation over most of the
+                stationary distribution, because entrants cannot appropriate the
+                knowledge a new industry adds. Innovation policy operates not only
+                through R&amp;D incentives but also through the reallocation of entry
+                between existing and new industries.
+              </p>
             </div>
-            <details class="abstract">
-              <summary>Abstract</summary>
-              <p>Steady aggregate growth coexists with non-stationary industry life cycles. A Schumpeterian growth model generates this coexistence as potential entrants choose between joining an existing industry and creating a new one. Individual industries follow endogenous life cycles, yet their stationary cross-section sustains steady growth and decomposes it into variety creation, frontier innovation, and follower catch-up. Calibrated to U.S. data, the model implies that growth is U-shaped in the firm-entry rate, with the economy on the downward-sloping segment. At the calibrated equilibrium, a constrained planner locally favors more industry creation over most of the stationary distribution, because entrants cannot appropriate the knowledge a new industry adds. Innovation policy operates not only through R&D incentives but also through the reallocation of entry between existing and new industries.</p>
-            </details>
+          
+            <div class="presented-at">
+              Presented at: NASM ES (2026); CEA (2026); Spring Midwest Macro (2026);
+              I-85 Macro Workshop (2025); EGSC, WUSTL (2025); Tiago Pires Graduate
+              Student Conference, UNC (2025)
+            </div>
           </div>
         </div>
       </section>
@@ -207,6 +246,18 @@
 
   window.addEventListener('scroll', setActiveOnScroll, { passive: true });
   window.addEventListener('resize', setActiveOnScroll);
+  document.querySelectorAll('.abstract-toggle').forEach(button => {
+  button.addEventListener('click', () => {
+    const abstract = document.getElementById(
+      button.getAttribute('aria-controls')
+    );
+
+    const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+    button.setAttribute('aria-expanded', String(!isOpen));
+    abstract.hidden = isOpen;
+  });
+});
 </script>
 </body>
 </html>
