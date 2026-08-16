@@ -1,0 +1,1793 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={Growth with Endogenous Industry Dynamics},
+  pdfauthor={Hyunjae Lee},
+  hidelinks
+}
+\usepackage{tikz}
+\usepackage{enumerate}
+\usepackage{array}
+\usetikzlibrary{decorations.pathreplacing}
+
+\bibliographystyle{aea}
+% \onehalfspacing
+\doublespacing
+\geometry{left=1.0in,right=1.0in,top=1.0in,bottom=1.0in}
+\def\sectionautorefname{Section}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+\newtheorem{definition}[proposition]{Definition}
+\newtheorem{corollary}[proposition]{Corollary}
+\newtheorem{assumption}{Assumption}[section]
+
+\title{Growth with Endogenous Industry Dynamics\thanks{I am deeply indebted to my advisor, Can Tian, for invaluable advice and guidance. I thank Marlon Azinovic-Yang, Lutz Hendricks, Will Jungerman, Yasutaka Koike-Mori, Stan Rabinovich, and Mohamad Adhami for valuable comments. I also thank participants at the Econometric Society North American Summer Meeting, the Canadian Economics Association Annual Meeting, the Midwest Macroeconomics Meeting, the I-85 Macroeconomics Workshop, the Washington University in St.\ Louis Economics Graduate Students' Conference, and the UNC Tiago Pires Graduate Student Conference for helpful comments and suggestions. This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.}}
+\author{Hyunjae Lee\thanks{E-mail: hyunjae.lee@unc.edu. Gardner Hall CB 3305, Department of Economics, University of North Carolina, Chapel Hill, NC 27599, United States. Tel: 984-758-2163.}\\[2pt] University of North Carolina at Chapel Hill}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+\vspace{-0.3in}
+\begin{abstract}
+\begin{spacing}{1.3}
+\noindent Steady aggregate growth coexists with non-stationary industry life cycles. A Schumpeterian growth model generates this coexistence as potential entrants choose between joining an existing industry and creating a new one. Individual industries follow endogenous life cycles, yet their stationary cross-section sustains steady growth and decomposes it into variety creation, frontier innovation, and follower catch-up. Calibrated to U.S.\ data, the model implies that growth is U-shaped in the firm-entry rate, with the economy on the downward-sloping segment. At the calibrated equilibrium, a constrained planner locally favors more industry creation over most of the stationary distribution, because entrants cannot appropriate the knowledge a new industry adds. Innovation policy operates not only through R\&D incentives but also through the reallocation of entry between existing and new industries.
+\vspace{0.1in}\\
+\noindent\textbf{Keywords:} Schumpeterian growth, endogenous industry dynamics, industry life cycle, variety creation, innovation policy
+\vspace{0.1in}\\
+\noindent\textbf{JEL classification:} O41, O31, L16, D62, O38
+\end{spacing}
+\end{abstract}
+\newpage
+
+\section{Introduction}
+
+Aggregate productivity growth has remained relatively stable over long horizons, even though the sectors driving it rotate over time \citep{FergusonW04,SarteT25}. This rotation reflects life-cycle patterns at the industry level, in which young industries exhibit high entry and rapid innovation while mature industries see declining entry and more incremental innovation \citep{GortK82,AbernathyU78,Klepper96}. As industries mature and their innovation slows, sustained aggregate growth requires a continuing flow of new, high-growth industries. Firms drive this process through entry and innovation decisions that vary with an industry's stage of development and in turn shape industry dynamics. The interaction between firm decisions and industry life cycles is therefore central both to explaining how aggregate growth stays steady despite the rise and decline of individual industries and to evaluating innovation policy.
+
+In this paper, I develop and quantify a step-by-step Schumpeterian growth model in which the set of active industries is endogenous. The key new margin is that potential entrants choose whether to join an existing industry or pay a sunk cost to create a new one. Industries are created by entrants, evolve as followers join and competition intensifies, and eventually exit due to obsolescence. Within each industry, the intensity of competition is itself endogenous, determined by the number of rivals and the size of technology gaps. This intensity shapes both incumbent innovation incentives and the attractiveness of the industry to new entrants. The entry decision governs the rate at which new industries appear, the cross-sectional distribution of industries over life-cycle states, and the long-run growth rate.
+
+The paper makes three contributions. First, it endogenizes industry life cycles in a Schumpeterian growth framework and shows how they shape aggregate growth. The entry mechanism generates the transition from new monopoly industries to mature oligopolies as an equilibrium outcome, and steady growth emerges from a stationary cross-section despite non-stationary industry paths. Second, it characterizes the local constrained inefficiency of decentralized industry creation. At the calibrated equilibrium, the planner's welfare derivative favors additional industry creation in states accounting for most of the stationary distribution because entrants cannot fully appropriate the knowledge a new industry adds. Third, the model introduces a policy margin absent from fixed-industry frameworks, the allocation of entrepreneurial entry between incumbent and new industries. This allocation jointly shapes incumbent innovation incentives, the pace of the industry life cycle, and aggregate growth.
+
+New industries begin as small monopolies with a one-step lead over a competitive fringe. As they prove profitable, they attract followers, transition into oligopoly, and experience high innovation rates as leaders and followers compete in a patent race. Over time, leaders pull ahead, followers catch up less frequently, and the incentives for further entry and follower innovation decline. Mature industries contain more firms but are less dynamic, and joining them becomes less attractive for new entrepreneurs. At that point, potential entrants are more likely to bear the cost of creating new industries instead.
+
+These non-stationary paths combine into a stationary cross-section, and the aggregate growth rate decomposes into three components. Variety creation comes from the birth of new industries, frontier innovation from leaders pushing ahead, and catch-up innovation from followers closing gaps in oligopolies, each weighted by the stationary share of industries in the corresponding state. Because these weights are the life-cycle shares, the cross-section maps directly to the growth rate, which clarifies how stable long-run growth can coexist with front-loaded innovation and declining business dynamism at the industry level.
+
+The same entry decision that drives these dynamics also creates a wedge between private and social incentives to create new industries. A new industry starts one step above the public knowledge level, so its creation expands the economy's knowledge stock in a way that entrants cannot fully appropriate. Creative destruction amplifies this wedge, because the arrival of future industries makes private firms discount profits at a rate above the social rate. A third force operates through general equilibrium, as a change in the entry margin shifts the distribution of industries and feeds back into firm values and innovation incentives. In the calibrated economy, the direct knowledge and creative-destruction forces favor more industry creation in every evaluated state. After equilibrium adjustments, the full local welfare derivative remains positive in states accounting for most of the stationary distribution but turns negative in a subset of oligopoly states. The effectiveness of innovation subsidies therefore depends on how the cross-section responds to the entry margin.
+
+I discipline the magnitudes by calibrating the model to U.S.\ data from 2000--2019. Comparative statics reveal a U-shaped relationship between the firm-entry rate and growth, with the calibrated economy on the downward-sloping segment, and a shallow hump-shaped response of growth to competition over the evaluated range. Equal-cost policy experiments illustrate how this margin transmits policy. Both a subsidy to incumbent R\&D and a subsidy to variety creation raise growth mainly through incumbent innovation, and how far each moves the entry margin depends on where entry decisions are responsive. In the calibrated economy those decisions are concentrated near corners, so a uniform creation subsidy is largely inframarginal.
+
+\paragraph{Related Literature}
+
+This paper connects four literatures, on within-industry Schumpeterian competition, growth through product creation, industry life-cycle evidence, and innovation policy. A large literature studies within-industry innovation races and market structure in Schumpeterian growth models. \citet{AghionHHV01} develop the step-by-step framework in which firms' innovation incentives depend on their position relative to rivals. \citet{AkcigitA21,AkcigitA23} extend this framework to match ten facts on declining U.S.\ business dynamism and identify declining knowledge diffusion as the dominant driver. \citet{LiuMS22} use a similar structure to show that low interest rates raise market power and reduce productivity growth. \citet{OlmsteadRumsey22} studies how declining laggard innovativeness drives rising concentration and the productivity slowdown. \citet{CavenaileCT25} develop an oligopolistic Schumpeterian model with an endogenously determined number of large firms within each industry and strategic innovation choices, with implications for markups and business dynamism. These models generate rich within-industry dynamics, including escape-competition effects, endogenous technology gaps, and leadership turnover. However, their key entry margins operate within existing markets rather than between incumbent industries and entirely new industries. As a result, the rate at which the economy creates new markets is not an equilibrium object in their policy analysis.
+
+A parallel literature studies growth through product creation and technological turnover. \citet{Romer90} introduced the expanding-variety growth model. \citet{AkcigitK18} distinguish internal innovation that improves existing products from external innovation that creates new product lines and find that entrants and small firms contribute disproportionately to high-impact external innovations. \citet{GarciaMaciaHK19} decompose U.S.\ productivity growth and show that incumbent own-product improvements account for the largest share. In a related endogenous-growth model of technological turnover, \citet{AghionBBB26} have entrants introduce new technologies and incumbents develop them incrementally, sustaining long-run growth through periodic replacement. \citet{Ribeiro26} studies growth with continually emerging technology vintages and a stationary distribution of research effort across technologies of different ages. But its central margin is the allocation of R\&D across new and old technologies, whereas this paper focuses on the allocation of entrepreneurial entry across incumbent and new industries. Most existing models of product creation and technological turnover do not jointly model the gradual transition from monopoly to competitive oligopoly, a front-loaded innovation pattern that declines over a life cycle, and a stationary cross-sectional distribution over industry life-cycle states that maps directly into aggregate growth. This paper brings these elements together.
+
+A third literature documents recurring life-cycle regularities in industries and product markets, reviewed in Section~\ref{sec:motivation}. My model generates these regularities endogenously from the interaction of step-by-step innovation and entry decisions. A fourth literature studies innovation policy in endogenous-growth and industry-dynamics environments. \citet{AkcigitHS22} derive optimal nonlinear R\&D subsidies with heterogeneous firms but do not distinguish the variety-creation margin from incumbent R\&D. \citet{AtkesonB19} evaluate uniform innovation subsidies and find modest scope for raising productivity. These papers do not study how subsidy design interacts with the composition of young and mature industries through endogenous industry creation. \citet{CavenaileGRBS24} are especially relevant because they study the policy implications of industry life cycles in general equilibrium with endogenous innovation and oligopolistic competition following technological breakthroughs. My paper differs by embedding a step-by-step Schumpeterian patent-race structure in a model with an explicit entry margin between joining incumbent industries and founding new ones. The stationary distribution of industries across life-cycle states and the effects of different subsidy instruments are therefore jointly determined in equilibrium.
+
+The rest of the paper is organized as follows. Section~\ref{sec:motivation} reviews the motivating facts, Section~\ref{sec:model} lays out the model, Section~\ref{sec:eqm} characterizes the stationary Markov-perfect equilibrium, Section~\ref{sec:result} derives the main theoretical results, Section~\ref{sec:quant} presents the quantitative analysis, and Section~\ref{sec:conclusion} concludes. Proofs and additional derivations are in the supplementary materials.
+
+
+\section{Motivating Facts}\label{sec:motivation}
+This section reviews four stylized facts about industry dynamics and aggregate productivity growth that motivate the model and the quantitative exercises below.
+
+\medskip
+\noindent\textbf{Stylized Fact 1: Aggregate productivity growth is stable, but the industries driving it rotate over time.}
+
+Over long horizons, aggregate productivity growth in advanced economies has been relatively stable. The industrial sources of that growth have not been stable. In the United States, the leading contributors have shifted repeatedly, from durable goods manufacturing to IT-producing industries and then toward IT-using services \citep{OlinerSS07, JorgensonHS08}. Sectoral reallocation continues in more recent data \citep{SarteT25}. These episodes are part of a broader pattern of recurring productivity surges associated with different technological and organizational forces \citep{FergusonW04}. If individual industries slow down as they mature, steady aggregate growth requires that new high-growth industries continually replace them. This replacement process motivates the central margin of the model, in which entrepreneurs endogenously create new industries. Individual industries then follow non-stationary life-cycle paths, but the cross-sectional distribution over life-cycle states remains stationary and delivers steady aggregate growth.
+
+\medskip
+\noindent\textbf{Stylized Fact 2: Industry-level output rises and prices fall.}
+
+At the industry level, \citet{Agarwal98}, building on the diffusion patterns documented by \citet{GortK82}, shows that industry evolution is typically associated with rising quantities and falling prices across a wide range of markets. In the model, surviving oligopolies grow in quantity holding the mass of industries fixed, and their wage-adjusted prices fall as they mature.
+
+\medskip
+\noindent\textbf{Stylized Fact 3: Entry rates decline as industries mature.}
+
+\citet{GortK82} and \citet{Agarwal98} document that, across many product markets, the number of active firms rises strongly in early stages and then levels off or declines. Using explicit annual entry and exit data for 25 product markets, \citet{AgarwalG96} show that industry entry rates peak in early growth stages and fall over time. Several mechanisms may amplify this decline. \citet{ArgenteFMP25} highlight costly demand-side frictions in firm growth, while \citet{ArgenteBHM25} document patterns consistent with strategic patenting by market leaders, suggesting an additional barrier to entry in mature markets. In the model, expected profits for new followers fall as an industry matures, so entry into a given industry declines endogenously. As incumbent industries become less attractive, potential entrants face stronger incentives to bear the sunk cost of founding a new market.\footnote{To keep the analysis tractable, I do not model the late-stage decline in the number of firms. A standard extension with fixed operating costs could generate such a shakeout without changing the main mechanisms.}
+
+\medskip
+\noindent\textbf{Stylized Fact 4: Innovation is front-loaded in the industry life cycle.}
+
+\citet{AbernathyU78} argue that new industries begin in a ``fluid'' phase with frequent major product innovations, after which a dominant design emerges and innovation shifts toward incremental process improvements. \citet{Klepper96} and \citet{Agarwal98} document similar trajectories, with patenting activity rising in the early years of a product market and declining in later stages. \citet{JovanovicW25} formalize these observations in a model of industry evolution calibrated to U.S.\ industries, including automobiles and personal computers. Front-loaded innovation ties aggregate growth to a continuous supply of young, high-innovation industries. If industry creation slows, the cross-section of industries ages and aggregate innovation declines even if within-industry behavior is unchanged. In the model, industry innovation rises early and then declines endogenously from its peak as the industry matures.
+
+\section{Model}\label{sec:model}
+This section presents a continuous-time Schumpeterian growth model in which, rather than the set of product lines being fixed, industries are created by entrepreneurs and exit over time, generating \emph{endogenous industry life cycles}. The central tension is the choice potential entrants face between joining an existing industry and creating a new one, which governs both aggregate growth and the structural evolution of the economy.
+
+\subsection{Household}\label{subsubsec:pref}
+Time is continuous and indexed by \(t \in [0, \infty)\). The economy is populated by a representative household that consumes, saves, and supplies labor. Production takes place in a continuum of industries indexed by \(i \in [0, N_t]\), where the mass \(N_t\) changes over time as new industries are created and existing ones exit. The household has logarithmic preferences over a final consumption good and maximizes lifetime utility \(U_t=\int_t^{\infty}e^{-\rho(s-t)}\log C_s\,ds\), where \(\rho>0\) is the rate of time preference and \(C_t\) denotes consumption at time \(t\). Log preferences imply a closed-form welfare expression used in Section~\ref{sec:result}. The household owns aggregate wealth \(A_t\), equal in equilibrium to the total market value of incumbent firms, and supplies one unit of labor inelastically. Its budget constraint is \(C_t+\dot A_t = w_t+r_tA_t\), where \(w_t\) is the wage and \(r_t\) is the interest rate.
+
+The final consumption good, which serves as the numeraire, is produced with a Cobb-Douglas aggregator over industry outputs,
+\begin{equation}\label{eq:aggregator}
+Y_t \;=\; N_t\exp\left(\frac{1}{N_t}\int_0^{N_t}\ln Y_{it}\, di\right),
+\end{equation}
+where \(N_t\) is the mass of industries at time \(t\) and \(Y_{it}\) is the output of industry \(i\). The aggregator implies that each industry receives the same revenue flow \(\bar{Y}_t \equiv Y_t / N_t\). Firm profits can therefore be written as functions only of within-industry state variables. This allows the aggregate economy to be summarized by a tractable cross-sectional distribution over industry states, characterized in Section~\ref{sec:eqm}. The normalization creates no mechanical love-of-variety effect. A larger mass of industries raises aggregate output only through the technologies new industries embody, while the decline in per-industry revenue \(\bar Y_t\) reallocates revenue away from incumbents.
+
+\subsection{Industries and Production}\label{subsec:firm_ind}
+
+Unless noted otherwise, I omit time subscripts for brevity. Each industry \(i\) contains a finite number of firms, collected in a set \(\mathcal{F}_i\), that differ in their technology levels and therefore in their productivity and equilibrium markups. Throughout the paper, the \emph{technology gap} is the difference in technology levels, measured in steps on the quality ladder, between a firm and its closest competitors. An industry with a single firm is a \emph{monopoly}, and an industry with two or more firms is an \emph{oligopoly}. A positive-gap oligopoly has one leader and a lower common follower tier, while all firms share the same technology in a neck-and-neck state. The assumption that all followers share a common technology level keeps the within-industry state to two dimensions, the technology gap \(m\) and the follower count \(n\). It also ensures that catch-up innovation maps directly into the evolution of the lowest technology tier used in the growth decomposition of Section~\ref{sec:result}. Firms produce differentiated varieties within the industry and compete in prices.
+
+\paragraph{Within-industry demand and production.}
+
+Industry \(i\)'s output is a CES aggregate of the individual varieties produced by firms \(j\in\mathcal{F}_i\), \(Y_i=\big(\sum_{j\in\mathcal{F}_i} y_{ji}^{(\sigma-1)/\sigma}\big)^{\sigma/(\sigma-1)}\) with \(\sigma>1\), where \(y_{ji}\) is the quantity of firm \(j\)'s variety and \(\sigma\) is the elasticity of substitution across varieties within an industry. Industry demand for \(Y_i\) comes from the final-good sector.
+
+Each firm \(j\) combines labor with its technology to produce \(y_{ji}=q_{ji}\,l_{ji}\) with \(q_{ji}=\lambda^{s_{ji}}\), where \(l_{ji}\) is labor input, \(s_{ji}\in\mathbb{R}_+\) is the technology level, and \(\lambda>1\) is the step size of the quality ladder. Firms take wages and the demand system as given and set prices to maximize profits. In each oligopoly state (number of firms and their technology levels), the pricing equilibrium is unique within the class of equilibria that are symmetric within each technology tier. All followers therefore charge a common price, and all firms charge a common price when \(m=0\). Prices, markups, and profits below refer to this symmetric equilibrium.
+
+\paragraph{Competitive fringe in new industries.}
+
+The economy features a public knowledge stock, denoted \(s^K_t\in\mathbb{R}_+\), defined as the average across industries of the lowest technology level among active producers. This object measures the widely available knowledge that new entrants can draw on when designing a new product. When a new industry is created at time \(t\), it starts with a monopolist whose technology is one step ahead of the public knowledge, \(s_{ji} = s^K_t+1\), and with a competitive fringe of firms whose technology equals \(s^K_t\), the level of the knowledge stock on the creation date. Fringe firms do not innovate, so their technology remains at this level as \(s^K\) continues to rise. Each fringe firm can produce a perfect substitute for the monopolist's variety. In equilibrium, the monopolist sets a limit price equal to the fringe's unit cost, so fringe firms do not produce and the monopolist serves the entire market. The fringe therefore does not enter the computation of \(s^K\). The fringe serves two roles. Economically, it captures the early exploratory phase of a new product line, in which many unsuccessful imitators can enter quickly using widely available technologies. Technically, it caps the monopoly price at the fringe unit cost and thereby determines the monopolist's markup.
+
+\subsection{Innovation, Industry Creation, and Destruction}\label{subsec:innovation}
+
+\paragraph{Innovation and R\&D costs.}
+
+Consider a firm that chooses an innovation intensity \(x \geq 0\). To achieve this rate, the firm must incur a flow R\&D cost \(R(x)\bar Y\) in units of the final good, where \(R(x)=(\alpha/\psi)x^{\psi}\) with \(\alpha>0\) and \(\psi>1\). Denominating the cost in units of \(\bar Y\) scales R\&D spending with the size of the industry's market and allows innovation incentives to be stationary after firm values are normalized by industry revenue.
+
+Conditional on choosing \(x\), innovations arrive according to a Poisson process with intensity \(x\). Each successful innovation raises the firm's technology index \(s_{ji}\) by one step, \(s_{ji} \;\to\; s_{ji} + 1\), and thus, \(q_{ji} \;\to\; \lambda q_{ji}\). For followers in an oligopoly, I assume that knowledge is shared instantaneously among all followers. When any follower innovates, the technology level of all followers in that industry increases by one step. Sharing operates within the follower tier of positive-gap industries. In a neck-and-neck state, an innovating firm moves one step ahead of its rivals, and its improvement is not shared. Thus, from the perspective of an individual follower, the effective innovation intensity includes both its own effort and the efforts of its peers. This sharing sustains the common follower technology level assumed in Section~\ref{subsec:firm_ind}. It captures the idea that incremental improvements are easily codified and diffuse among firms using similar, relatively mature technologies.\footnote{I abstract from exogenous catch-up shocks and from sudden leapfrogging within incumbent industries. In many related step-by-step frameworks, such assumptions are used to keep technology gaps from becoming too persistent or to generate sufficient turnover. In this framework, they are not needed. Catch-up innovation is endogenous and gradual, arising from followers' R\&D choices, while large gaps and crowded follower tiers endogenously depress follower values, innovation, and entry into mature industries. Stationarity is instead sustained by the continual creation of new industries, which replenishes the cross-section with young, high-growth industries and prevents the economy from being dominated by mature, low-innovation ones.}
+
+\paragraph{Potential entrants and industry creation.}
+
+In each existing industry, a potential entrant arrives at an exogenous Poisson rate \(z > 0\). Upon arrival, the potential entrant chooses between (i) \emph{joining the industry where it arrived} and (ii) \emph{creating a new industry}. Under (i), the entrant adopts the lowest technology level among active producers in that industry (the followers' level in an oligopoly, or the monopolist's level in a monopoly), becoming either a new follower or a neck-and-neck competitor.\footnote{The competitive fringe is present only during the monopoly stage. I assume that it exits when the first strategic follower joins, at which point the industry begins its oligopoly stage in state \((m=0,n=1)\).} This reflects the idea that older technologies are easier to access and that entry into established markets typically occurs at the lower end of the quality spectrum. Under (ii), the entrant starts a fresh industry as a monopolist at technology level \(s^K + 1\), one step ahead of the current public knowledge stock \(s^K\). Creating a new industry requires paying a sunk cost \(\kappa \bar{Y}\) in units of the final good. The cost \(\kappa\) is an i.i.d.\ draw from a distribution \(G\) with support \([\underline{\kappa}, \bar{\kappa}]\), \(\underline{\kappa} \geq 0\), which the entrant observes upon arrival. A lower draw represents a more promising or more easily implementable idea for a new product line. I assume that \(G\) is continuously differentiable with a positive density on the interior of its support.
+
+After observing the state of the industry where it arrived and its cost draw \(\kappa\), the potential entrant compares the value of joining that industry with the value of paying \(\kappa\bar Y\) to found a new industry that starts with a temporary monopoly position. This entry decision jointly determines the number of firms in each industry and the rate at which new industries appear. It therefore governs the balance between intensifying competition within existing markets and expanding the set of markets. Because a new industry is born at \(s^K+1\), the public knowledge stock and the rate of industry creation are linked. As industries innovate and followers catch up, \(s^K\) gradually increases, and each successive new industry starts from a higher technological base. This link between industry creation and the knowledge stock is also the source of the knowledge externality analyzed in Section~\ref{sec:result}. Private entrants cannot appropriate the full productivity gain that a new industry confers on the economy.
+
+\paragraph{Industry exit.}
+
+Each active industry exits the economy at an exogenous Poisson rate \(\delta > 0\). When an industry exits, all firms in that industry disappear and their products cease to be available in the final-good aggregator. Industry exit captures obsolescence of product lines due to shifts in tastes, technologies, or regulations that are not explicitly modeled. Together with industry creation, exogenous exit determines the net growth rate of the mass of industries, \(g_N=\gamma-\delta\), where \(\gamma\) is the equilibrium rate of industry creation derived in Section~\ref{sec:eqm}.
+
+\bigskip
+
+Simple parameter restrictions nest two familiar benchmarks. With \(z = 0\) and \(\delta = 0\), the mass of industries is fixed and the model reduces to a step-by-step quality-ladder framework. With \(\alpha\rightarrow\infty\) and \(z > 0\), incumbents do not innovate and growth is driven solely by the creation of new industries born one step above the rising knowledge stock, as in expanding-variety models. The baseline maintains both margins.
+
+\section{Equilibrium}\label{sec:eqm}
+
+This section characterizes a stationary and symmetric Markov-perfect equilibrium. I first establish the industry states and profit structure implied by the model primitives. I then describe the value functions and innovation decisions of monopolists, leaders, followers, and potential entrants. Finally, I define the equilibrium, express the rate of variety creation in terms of the stationary distribution of industries over life-cycle states, and derive the technology dynamics that enter the growth decomposition in Section~\ref{sec:result}.
+
+\subsection{Industry States and Profit Structure}
+
+Equilibrium prices, quantities, and profits within an industry are functions of a small set of state variables. To summarize the state of an industry, I adopt the following notation. A superscript \(M\) refers to monopolies or monopolist-specific variables. \(\hat{s}\) denotes the technology gap between a monopolist and the fringe. For example, \(V^M_{\hat{s}}\) is the value of a monopolist with gap \(\hat{s}\) over the fringe. A subscript \((m,n)\) refers to an oligopoly with technology gap \(m\) and \(n\) followers. I call such an industry an \((m,n)\)-industry. When \(m\geq1\), the industry has one leader and \(n\) symmetric followers, and a subscript \(-mn\) denotes an object associated with a representative follower. When \(m=0\), all \(n+1\) firms are symmetric and no leader--follower distinction is made.
+
+Given the Cobb-Douglas aggregation in the final-good sector, each active industry earns the same revenue flow \(\bar{Y}\equiv\frac{Y}{N}\) in equilibrium, and I use \(\bar{Y}\) to scale firm-level variables. The equilibrium firm profits are proportional to industry revenue and expressed as \(\Pi=\pi\bar{Y}\), where \(\pi\in(0,1)\) is a normalized profit. The industry price is defined as \(P_i\equiv\frac{\sum_{j\in\mathcal{F}_i}p_{ji}y_{ji}}{Y_i}\), where \(p_{ji}\) is the price charged by firm \(j\in\mathcal{F}_i\). Profits, output, and prices satisfy the following properties in equilibrium.
+
+\begin{lemma}[Properties of firm profits and industry output and price]\label{lem:static_pricing}
+
+Consider a monopoly industry born at time \(\tau\) and currently with technology gap \(\hat{s}\) over the fringe, and an oligopoly with gap \(m\), \(n\) followers, and follower technology level \(s_f\).
+
+\begin{enumerate}
+    \item The monopolist's normalized profit is \(\pi^M_{\hat{s}}=1-\lambda^{-\hat{s}}\). Hence \(\pi^M_{\hat{s}}\nearrow1\), and the one-step profit gain \(\pi^M_{\hat{s}+1}-\pi^M_{\hat{s}}\) decreases to zero as \(\hat{s}\to\infty\).
+    \item Normalized oligopoly profits depend only on \(m\) and \(n\). For \(m\geq1\), \(\pi_{-mn}\leq\pi_{0n}\leq\pi_{mn}\). For fixed \(n\), \(\pi_{mn}\nearrow1\) and \(\pi_{-mn}\searrow0\) as \(m\to\infty\). For fixed \(m\), every firm's normalized profit converges to zero as \(n\to\infty\).
+    \item The wage-adjusted industry price \(P_i/w\) depends only on \(s^K_\tau\) in the monopoly case and \((m,n,s_f)\) in the oligopoly case. It is constant during a given industry's monopoly stage. During the oligopoly stage, every feasible state transition lowers \(P_i/w\). Moreover, \(P_i/w\searrow0\) as \(s^K_\tau\rightarrow\infty\) across monopoly birth cohorts, and as \(m\rightarrow\infty\), \(n\rightarrow\infty\), or \(s_f\rightarrow\infty\) for an oligopoly. Industry output satisfies \(Y_i=\bar{Y}/P_i\) and, for given \(\bar{Y}/w\), \(Y_i\nearrow\infty\) in each of these limits.
+\end{enumerate}
+\end{lemma}
+
+Lemma~\ref{lem:static_pricing} establishes the profit and price properties that shape innovation incentives over the life cycle. A monopolist gains from widening its gap over the fringe, but the one-step profit gain shrinks as the gap widens. In an oligopoly, the leader innovates to widen the gap and capture a larger profit share, followers innovate to narrow it, and additional entry reduces profits for all incumbents, making crowded industries less attractive to potential entrants. The wage-adjusted price of a monopoly is pinned down by the fringe technology at birth and stays constant during the monopoly stage, later-born industries start at lower prices, and every oligopoly-stage transition lowers the wage-adjusted price. The associated output implication is stated in Proposition~\ref{prop:lifecycle}.
+
+\subsection{Value Functions and Innovation Decisions}\label{subsec:value}
+
+The household's Euler equation, \(\dot{C}_t/C_t = r_t - \rho\), links the interest rate to consumption growth. On a balanced growth path consumption grows at the aggregate rate \(g\), so \(r = \rho + g\). Because all flow payoffs in a given industry state scale with the common revenue level \(\bar{Y}\), which grows at rate \(g-g_N\) where \(g_N\) is the growth rate of the mass of industries, I work with normalized values \(v \equiv V/\bar{Y}\). These are time-invariant in a stationary equilibrium and are discounted at the effective rate \(\rho+g_N\) in the Bellman equations below (see Supplementary Materials~\ref{app:HJB_normalization}). Let \(v^M_{\hat{s}}\) denote the normalized value of a monopolist with technology gap \(\hat{s}\) over the fringe. In an oligopoly, let \(v_{0n}\) denote the common firm value when \(m=0\), and let \(v_{mn}\) and \(v_{-mn}\) denote the leader's and a representative follower's values when \(m\geq1\).
+
+\paragraph{Monopolist.}
+
+Consider a monopolist with technology gap \(\hat{s}\) over the fringe. Its normalized value \(v^M_{\hat{s}}\) solves
+\begin{equation}
+(\rho + g_N)\,v^M_{\hat{s}} = \max_{x \ge 0} \Big\{\pi^M_{\hat{s}}
+                             - R(x)+x\big(v^M_{\hat{s}+1}
+                             - v^M_{\hat{s}}\big)+z\,\theta^M\big(v_{01}
+                             - v^M_{\hat{s}}\big)
+                             - \delta\,v^M_{\hat{s}} \Big\}. \label{eq:valueM}
+\end{equation}
+
+The left-hand side is the required flow return on the monopolist's value, combining discounting at rate \(\rho\) with the dilution of the industry's revenue share as the mass of industries grows at rate \(g_N\). On the right-hand side, the monopolist collects its profit \(\pi^M_{\hat{s}}\), invests in R\&D to generate innovations at rate \(x\), and gains \(v^M_{\hat{s}+1} - v^M_{\hat{s}}\) upon success.
+
+The term \(z\theta^M(v_{01} - v^M_{\hat{s}})\) captures the threat of entry. \(\theta^M\) is the probability that a potential entrant who meets a monopoly chooses to join rather than create a new industry. It is the same for all monopolists because the entrant always receives the neck-and-neck duopoly value \(v_{01}\) regardless of \(\hat{s}\). Entry converts the monopoly into a duopoly, and exogenous exit at rate \(\delta\) destroys the firm's value.
+
+The optimal innovation intensity is
+\[x^M_{\hat{s}}
+=
+\left(
+  \frac{\max\{v^M_{\hat{s}+1} - v^M_{\hat{s}},\,0\}}{\alpha}
+\right)^{\frac{1}{\psi-1}}.\]
+The monopolist's incentive to invest in R\&D is governed entirely by the marginal value of an additional step, \(v^M_{\hat{s}+1} - v^M_{\hat{s}}\).
+
+Two forces dampen the monopolist's incentive to widen its gap. The marginal gain from pushing an already-large gap further declines (Lemma~\ref{lem:static_pricing}), and the threat of entry limits the horizon over which monopoly rents can be appropriated. The decline of \(v^M_{\hat{s}+1} - v^M_{\hat{s}}\) with \(\hat{s}\) drives the eventual slowdown of monopoly innovation as the industry matures.
+
+\paragraph{Leader and follower.}
+
+Within an oligopoly, the leader and followers are locked in a patent race in which each party's payoff depends on the other's actions and on the current state \((m,n)\).
+
+For \(m\geq1\), the normalized value of the leader in an \((m,n)\)-industry satisfies
+\begin{align}
+    (\rho + g_N)v_{mn} = \max_{ x \ge 0} \Big\{& \pi_{mn}
+                        - R(x) + x\big(v_{m+1,n} - v_{mn}\big)\nonumber\\
+                        & + n x_{-mn}\big(v_{m-1,n} - v_{mn}\big) + z\,\theta_{mn}\big(v_{m,n+1} - v_{mn}\big) - \delta v_{mn} \Big\}. \label{eq:valuel}
+\end{align}
+
+The new element relative to the monopolist's problem is follower catch-up, which arrives at total intensity \(n x_{-mn}\) and narrows the gap to \(m-1\). Given follower behavior, the leader's optimal intensity takes the same form as the monopolist's, with marginal value \(v_{m+1,n}-v_{mn}\).
+
+Leader innovation is ultimately weak in sufficiently wide-gap or crowded oligopolies. As \(m\to\infty\), the marginal value of another step vanishes. As \(n\to\infty\), crowding drives profits and values toward zero. Lemma~\ref{lem:value} formalizes these limits.
+
+For \(m\geq1\), each follower's normalized value \(v_{-mn}\) satisfies
+\begin{align}
+    (\rho + g_N)v_{-mn} = \max_{x \ge 0} \Big\{& \pi_{-mn}
+                          - R(x) + \big(x + (n-1)x_{-mn}\big)\big(v_{-m+1,n} - v_{-mn}\big) \nonumber\\
+                          & + x_{mn}\big(v_{-m-1,n} - v_{-mn}\big)
+                          + z\,\theta_{mn}\big(v_{-m,n+1} - v_{-mn}\big)
+                          - \delta v_{-mn} \Big\}. \label{eq:valuef}
+\end{align}
+
+Because improvements are shared, the follower tier advances at total rate \(x + (n-1)x_{-mn}\), yielding the gain \(v_{-m+1,n}-v_{-mn}\). The common follower intensity takes the same form as the leader's, with this marginal value.
+
+The follower's R\&D problem highlights a free-riding motive. Because improvements diffuse instantaneously among followers, each follower receives the same one-step advance whether it or another follower innovates, while bearing R\&D costs only for its own effort.
+
+When \(m=0\), all \(n+1\) firms are symmetric neck-and-neck competitors. I denote their common normalized value, profit, and innovation rate by \(v_{0n}\), \(\pi_{0n}\), and \(x_{0n}\). The representative firm's value satisfies
+\begin{align}
+(\rho+g_N)v_{0n}=\max_{x\ge0}\Big\{&\pi_{0n}-R(x)+x\big(v_{1n}-v_{0n}\big)\nonumber\\
+&+nx_{0n}\big(v_{-1,n}-v_{0n}\big)+z\,\theta_{0n}\big(v_{0,n+1}-v_{0n}\big)-\delta v_{0n}\Big\}.\label{eq:value0}
+\end{align}
+
+A firm's innovation at rate \(x\) moves it into a temporary leader position, innovations by rivals at total rate \(nx_{0n}\) displace it, and entry at rate \(z\theta_{0n}\) adds a competitor. This case isolates the escape-competition mechanism familiar from step-by-step models. Competition can raise innovation when firms are neck-and-neck because the prize from becoming the leader is high, while endogenous entry disciplines this force as business stealing intensifies with \(n\).
+
+\paragraph{Potential entrant.}
+
+The entry decision is the central margin that links within-industry competition to the rate of industry creation. Recall from Section~\ref{subsec:innovation} that the cost of creating a new industry, \(\kappa\), is drawn from a distribution \(G\) with support \([\underline{\kappa},\bar{\kappa}]\), with \(0 \leq \underline{\kappa} < \bar{\kappa}\). For the analytical results below, I impose \(\bar{\kappa} < v^M_1\), so that even the highest-cost potential entrant obtains strictly positive surplus from starting a new industry.
+
+A potential entrant with cost draw \(\kappa\) compares two options. Joining an existing industry is cheap but competitive. The entrant adopts the lowest available technology and earns the post-entry value \(v^f_{S+}\), where \(S\) denotes the state of the encountered industry. The post-entry value equals \(v_{01}\) upon meeting a monopoly, \(v_{0,n+1}\) upon meeting a \((0,n)\)-industry, and \(v_{-m,n+1}\) upon meeting an \((m,n)\)-industry with \(m\geq1\). Creating a new industry is costly but secures a temporary monopoly. The entrant pays \(\kappa\bar Y\) and earns \(v^M_1\), the value of a monopolist starting one step above the public knowledge stock. The entrant therefore joins the incumbent industry if and only if \(v^f_{S+}\geq v^M_1-\kappa\). Joining is more attractive in young industries where follower values are high. In mature industries with wide gaps and crowded follower tiers, follower values are depressed, and more entrants find it worthwhile to pay the market-initiation cost instead.
+
+Aggregating over \(\kappa\) gives the state-contingent joining probability \(\theta(S)\equiv\int\mathbf{1}\{v^f_{S+}\geq v^M_1-\kappa\}\,dG(\kappa)\), with \(\theta^M\equiv\theta(M)\) and \(\theta_{mn}\equiv\theta((m,n))\). These probabilities appear in the Bellman equations~(\ref{eq:valueM})-(\ref{eq:value0}), closing the link between the entry decision and incumbent innovation.
+
+Whenever a potential entrant meets an incumbent industry in state \(S\), it creates a new industry with probability \(1-\theta(S)\) and joins with probability \(\theta(S)\). Since such meetings occur at rate \(z\) per incumbent industry, define the gross rate of variety creation per incumbent industry as \(\gamma \equiv z\,\mathbb{E}[1-\theta(S)]\), where the expectation is taken over the state of the industry encountered by the entrant, which coincides with the cross-sectional distribution in the stationary equilibrium characterized below. In a stationary equilibrium, the mass of industries grows at rate \(g_N = \gamma - \delta\). Together with \(\rho\), the rate \(\gamma\) determines the effective discount rate \(\rho+\gamma\) for normalized firm values, combining the Bellman discount rate \(\rho+g_N\) with the exit hazard \(\delta\).
+
+\bigskip
+
+The next lemma summarizes key properties of the value functions and innovation rates in a stationary equilibrium.
+
+\begin{lemma}[Properties of value functions and innovation rates] \label{lem:value}
+    In any stationary Markov-perfect equilibrium, the normalized value functions and innovation rates satisfy the following properties.
+    \begin{enumerate}[(i)]
+        \item For any normalized value \(v\), \(0 < v < \frac{1}{\rho+\gamma}\).
+
+        \item The monopolist's value \(v^M_{\hat{s}}\) increases in its technology gap \(\hat{s}\), with \(\lim_{\hat{s}\to\infty} v^M_{\hat{s}} = \frac{1+z\theta^M v_{01}}{\rho+\gamma+z\theta^M}\). The associated innovation rate \(x^M_{\hat{s}}\) is strictly positive and \(x^M_{\hat{s}} \searrow 0\) as \(\hat{s} \to \infty\).
+
+        \item For any fixed \(m\geq0\), all firms' values and innovation rates converge to zero as \(n\to\infty\). For fixed \(n\),
+            \[\lim_{m \to \infty} v_{mn} = \frac{1}{\rho + \gamma},\qquad
+              \lim_{m\to\infty}v_{-mn}=\lim_{m\to\infty}x_{mn}=\lim_{m\to\infty}x_{-mn}=0.\]
+
+        \item There exists a finite upper bound \(n^\ast \ge 1\) on the number of followers such that entry into an industry with \(n \ge n^\ast\) followers is never profitable. In particular, \(\theta_{mn} = 0\) for all \(m\) and all \(n \ge n^\ast\).
+    \end{enumerate}    
+\end{lemma}
+
+Part (i) bounds normalized values by the present value of a perpetual unit profit stream at the effective rate combining time preference, revenue-share dilution, and exit. No firm can be worth more because flow profits are below one. Part (ii) shows that a monopolist's value rises with its lead while its R\&D effort declines, because the incremental return \(v^M_{\hat{s}+1} - v^M_{\hat{s}}\) shrinks with \(\hat{s}\). In the limit, the marginal return to innovation is zero while the entry threat remains, and this declining effort contributes to the growth slowdown within maturing industries.
+
+Part (iii) traces two routes to low innovation. As the follower count grows with \(m\) fixed, crowding competes away profits, values collapse, and all firms cease to innovate. As the gap grows with \(n\) fixed, the leader's value approaches its upper bound while follower values and all innovation rates vanish. Catch-up becomes futile for followers, and the unthreatened leader has little reason to invest, so wide-gap oligopolies converge to a low-innovation state that resembles a de facto monopoly. Part (iv) connects crowding to the entry margin. Because follower values fall to zero in \(n\), there is a finite \(n^\ast\) beyond which no entrant joins, so potential entrants who encounter such industries create new ones, keeping the relevant set of industry sizes finite in equilibrium.
+
+\subsection{Stationary Markov-Perfect Equilibrium}\label{sec:stationary}
+
+Given the optimal decisions described in the previous subsection, I restrict attention to stationary symmetric Markov-perfect equilibria and characterize their properties. Let \(\mu^M_{\hat{s}}\) denote the share of all industries that are monopolies with gap \(\hat{s}\), and let \(\mu_{mn}\) denote the share that are oligopolies with technology gap \(m\) and \(n\) followers. These shares satisfy \(\sum_{\hat{s}=1}^\infty \mu^M_{\hat{s}} + \sum_{m=0}^\infty \sum_{n=1}^{n^\ast} \mu_{mn} = 1\).
+
+Let \(\mu^M = \sum_{\hat{s}=1}^{\infty} \mu^M_{\hat{s}}\) denote the total share of monopolies. The gross rate of variety creation \(\gamma\), defined in Section~\ref{subsec:value} as \(z\,\mathbb{E}[1-\theta(S)]\), can now be expressed explicitly using the cross-sectional distribution,
+\[
+\gamma \;=\; z\left[(1-\theta^M)\mu^M + \sum_{n=1}^{n^\ast}\sum_{m=0}^\infty (1-\theta_{mn})\mu_{mn}\right].
+\]
+A larger share of mature industries, where joining is unattractive, raises \(\gamma\). The Kolmogorov forward equations that determine \(\{\mu^M_{\hat{s}}, \mu_{mn}\}\) are given in Supplementary Materials~\ref{app:KFE}.
+
+\begin{figure}[t!]
+\centering
+\resizebox{0.85\linewidth}{!}{%
+\begin{tikzpicture}
+    \draw (-.5,0) node {\(\gamma\)};
+    \draw[->] (0,0) -- (2,0);
+    
+    \draw (2.5,0) node {\(\mu^M_1\)};
+    \draw[->] (2.5,.5) -- (2.5,2);
+    \draw (2.1,1.25) node {\(x^M_1\)};
+    \draw[dotted] (2.5,2.5) -- (2.5,3);
+    \draw (2.5,3.5) node {\(\mu^M_{\hat{s}}\)};
+    \draw[->] (2.5,4) -- (2.5,5.5);
+    \draw (2.1,4.75) node {\(x^M_{\hat{s}}\)};
+    \draw[dotted] (2.5,6) -- (2.5,6.5);
+    \draw[->] (3,0) -- (5.5,0);
+    \draw (4.25,.3) node {\(z\theta^M\)};
+    \draw[dotted] (4.25,.8) -- (4.25,1.5);
+    \draw[->] (3,3) -- (5.5,.5);
+    \draw[dotted] (4.25,2.5) -- (4.25,4);
+    
+    \draw (6,0) node {\(\mu_{01}\)};
+    \draw[->] (5.9,.5) -- (5.9,2);
+    \draw (5.5,1.25) node {\(2x_{01}\)};
+    \draw[->] (6.1,2) -- (6.1,.5);
+    \draw (6.55,1.25) node {\(x_{-11}\)};
+    \draw[dotted] (6,2.5) -- (6,4);
+    \draw[->] (6.5,0) -- (8,0);
+    \draw (7.25,.3) node {\(z\theta_{01}\)};
+    \draw[dotted] (8.5,0) -- (9,0);
+    \draw[dotted] (7.5,2.5) -- (9,2.5);
+    \draw (9.5,0) node {\(\mu_{0n}\)};
+    \draw[dotted] (9.5,.5) -- (9.5,2);
+    \draw (9.5,2.5) node {\(\mu_{mn}\)};
+    \draw[->] (10,2.5) -- (11.5,2.5);
+    \draw (10.75,2.8) node {\(z\theta_{mn}\)};
+    \draw[->] (9.4,3) -- (9.4,4.5);
+    \draw (9,3.75) node {\(x_{mn}\)};
+    \draw[->] (9.6,4.5) -- (9.6,3);
+    \draw (10.5,3.75) node {\(nx_{-m-1,n}\)};
+    \draw[dotted] (9.5,5) -- (9.5,6.5);
+    \draw[->] (10,0) -- (11.5,0);
+    \draw (10.75,.3) node {\(z\theta_{0n}\)};
+    \draw[dotted] (12,0) -- (12.5,0);
+    \draw[dotted] (12,2.5) -- (12.5,2.5);
+
+    \draw[dashed] (0.9,-.8) -- (0.9,7.9);
+    \draw[dashed] (0.9,7.9) -- (13.5,7.9);
+    \draw[dashed] (13.5,-.8) -- (13.5,7.9);
+    \draw [decorate,decoration={brace,mirror,amplitude=10pt,raise=2ex}] (0.9,-.6) -- (13.5,-.6);
+    \draw[->] (7.2,-1.5) -- (7.2,-2);
+    \draw (7.2,-2.5) node {\(-(\delta+g_N)\)};
+
+    \draw[densely dotted] (1.4,-.5) -- (1.4,6.9);
+    \draw[densely dotted] (1.4,6.9) -- (3.6,6.9);
+    \draw[densely dotted] (3.6,-.5) -- (3.6,6.9);
+    \draw[densely dotted] (1.4,-.5) -- (3.6,-.5);
+    \draw (2.5,7.1) node {\small Monopoly};
+    \draw[densely dotted] (4.9,-.5) -- (4.9,6.9);
+    \draw[densely dotted] (4.9,6.9) -- (13,6.9);
+    \draw[densely dotted] (13,-.5) -- (13,6.9);
+    \draw[densely dotted] (4.9,-.5) -- (13,-.5);
+    \draw (8.95,7.1) node {\small Oligopoly};
+\end{tikzpicture}}
+\caption{Flowchart of industry shares. Arrows show transitions across monopoly and oligopoly states. The term \(\delta+g_N\) is the combined rate of exit and dilution.}
+\label{tikz:ind_life}
+\end{figure}
+
+Figure~\ref{tikz:ind_life} traces the life cycle of a typical industry through the state space. Every industry enters as a fresh monopoly at \(\hat{s} = 1\). The monopolist climbs the ladder at rate \(x^M_{\hat{s}}\), and at rate \(z\theta^M\) an entrant joins, converting the monopoly into a neck-and-neck duopoly at \((0,1)\) and starting the oligopoly stage. From there the gap widens at rate \(x_{mn}\), narrows at total rate \(nx_{-mn}\), and new followers join at rate \(z\theta_{mn}\), pushing the industry toward more crowded states. Together, these state-dependent transitions generate the industry life-cycle patterns analyzed below.
+
+Because the mass of industries grows at net rate \(g_N=\gamma-\delta\), a surviving industry loses relative share at rate \(g_N\) as new industries enter, in addition to facing exit at rate \(\delta\). In a stationary equilibrium, the distribution \(\{\mu^M_{\hat{s}}, \mu_{mn}\}\) is time-invariant, meaning that the flows of industries into and out of each state exactly balance. The key aggregate state variables for growth are therefore the rate of variety creation \(\gamma\) and the distribution of gaps and followers summarized by \(\{\mu^M_{\hat{s}}, \mu_{mn}\}\). I can now define the equilibrium formally. Supplementary Materials~\ref{app:eqm_definition} states the complete system of equilibrium conditions.
+
+\begin{definition}[Equilibrium]
+A stationary and symmetric Markov-perfect equilibrium consists of the normalized values and policies defined above, the state-contingent joining probabilities, the stationary distribution over industry states, and the aggregate rates \(g_N\) and \(\gamma\). Firms and potential entrants optimize, industry shares satisfy their stationary laws of motion, the household Euler equation holds, and the resource, labor, and asset markets clear, with \(\gamma=z\mathbb{E}[1-\theta(S)]\) and \(g_N=\gamma-\delta\).
+\end{definition}
+
+I restrict attention to stationary equilibria with a positive oligopoly share and stationary distributions with finite first gap moments, \(\sum_{\hat{s}\geq1}\hat{s}\mu^M_{\hat{s}} + \sum_{n=1}^{n^\ast}\sum_{m\geq0} m\mu_{mn} < \infty\), so that the average gaps and the stationary sums used below are well defined.
+
+With the equilibrium distribution in hand, I can characterize how the aggregate technology level evolves. Let \(\bar{s}^M_t\) denote the average monopolist technology level and \(\bar{s}^{cf}_t\) the average technology level of the associated competitive fringe firms. For oligopoly industries, let \(\bar{s}^f_t\) denote the average lowest technology level and \(\bar{s}^l_t\) the average highest technology level, and define the average technology gap among oligopolies as \(\bar{m}\). The public knowledge stock can then be written as \(s^K_t = \mu^M \bar{s}^M_t + (1-\mu^M)\bar{s}^f_t\).
+
+\begin{lemma}[Properties of technology levels in a stationary equilibrium]\label{lem:levels}
+    The public knowledge stock grows at a constant rate
+\[\dot{s}^K = \gamma + \sum_{\hat{s}=1}^\infty \mu^M_{\hat{s}} x^M_{\hat{s}} + \sum_{n=1}^{n^\ast}\sum_{m=1}^\infty n x_{-mn} \mu_{mn}.\]
+The average technology levels satisfy
+\begin{align*}
+\gamma(\bar{s}^M - \bar{s}^{cf}) &= \gamma + \sum_{\hat{s}=1}^\infty \mu^M_{\hat{s}} x^M_{\hat{s}},\\
+\gamma(1-\mu^M)(\bar{s}^l - \bar{s}^f) &= \gamma(1-\mu^M)\bar{m} \\
+&= \sum_{n=1}^{n^\ast} \left[ (n+1)x_{0n}\mu_{0n} + \sum_{m=1}^\infty x_{mn}\mu_{mn} \right] - \sum_{n=1}^{n^\ast}\sum_{m=1}^\infty n x_{-mn} \mu_{mn}.
+\end{align*}
+\end{lemma}
+
+Lemma~\ref{lem:levels} shows that the public knowledge stock grows at a constant rate that combines variety creation (each new industry is born one step above \(s^K\)), monopolist innovation (the monopolist's technology is the industry's lowest active tier), and follower catch-up (which advances the lowest tier in oligopolies). The level equations link average gaps to the balance of innovative activity. The average monopoly lead equals the one-step birth gap plus cumulative monopolist innovation per unit of the industry turnover rate \(\gamma\), and the average oligopoly gap balances leader innovation against follower catch-up and dilution. These are equilibrium restrictions rather than accounting identities, and the same distribution that determines \(\dot{s}^K\) reappears as the weights in the growth decomposition of Section~\ref{sec:result}.
+
+\section{Aggregate Growth and Industry Dynamics}\label{sec:result}
+
+This section derives the main theoretical results. I first decompose the aggregate growth rate into contributions from variety creation, monopolist innovation, and catch-up innovation, each weighted by the stationary distribution characterized in Section \ref{sec:eqm}. I then characterize how individual industries evolve over their life cycles despite the stationarity of the cross-section. Finally, I analyze the constrained efficiency of the industry creation margin and identify the externalities that drive a wedge between the private and social incentives to create new industries.
+
+\subsection{Aggregate Growth Decomposition}
+
+The central result is that steady aggregate growth arises even though individual industries follow non-stationary life-cycle paths. The stationary cross-section ensures that the average contribution of each growth margin remains constant over time.
+
+\begin{proposition}[Steady growth with non-stationary industry life cycle]\label{prop:agggrowth}
+    In any symmetric stationary Markov-perfect equilibrium, the constant growth rate can be expressed as
+    \begin{align*}
+    g&=\ln\lambda\left(\gamma+\sum^\infty_{\hat{s}=1}\mu^M_{\hat{s}}x^M_{\hat{s}}+\sum_{n=1}^{n^\ast}\sum^\infty_{m=1} nx_{-mn}\mu_{mn}\right)\\
+    &=\ln\lambda\left(\gamma+\sum^\infty_{\hat{s}=1}\mu^M_{\hat{s}}x^M_{\hat{s}}+\sum_{n=1}^{n^\ast}\left((n+1)x_{0n}\mu_{0n}+\sum^\infty_{m=1} x_{mn}\mu_{mn}\right)-\gamma(1-\mu^M)\bar{m}\right).
+    \end{align*}
+\end{proposition}
+
+The first line decomposes growth into three sources scaled by \(\ln\lambda\). The first term captures variety creation. Entering industries start one step above \(s^K\), while exiting incumbents carry lowest tiers that average \(s^K\), so entry and exit net to one quality step per new industry. The second term aggregates monopolist innovation weighted by \(\mu^M_{\hat{s}}\). The third captures catch-up innovation in oligopolies, where followers advance the lowest technology tier at combined rate \(nx_{-mn}\) and thereby raise the public knowledge stock without moving the frontier.
+
+The second line rewrites the decomposition in terms of leader innovation, using Lemma~\ref{lem:levels}. The correction term $\gamma(1-\mu^M)\bar m$ reflects turnover and dilution of the oligopoly gap stock. Oligopoly gaps disappear from the cross-section at the combined rate $\delta+g_N=\gamma$, whereas industries enter the oligopoly stage at gap zero. By definition the sum of these contributions is \(\dot{s}^K\), so \(g=\ln\lambda\cdot\dot{s}^K\).
+
+Proposition~\ref{prop:agggrowth} shows that aggregate growth is fully determined by industry dynamics. This structure implies that policies or parameter changes that shift the cross-sectional distribution affect aggregate growth through several margins simultaneously. Making entry into existing industries more or less attractive, for instance, changes the balance of all three growth components. I return to this point in Section~\ref{subsec:planner}.
+
+Continual industry creation and exit sustain the stationary cross-section by replenishing it with young industries, while diminishing marginal gains and competition make mature, crowded industries low-innovation. Together these forces generate steady growth despite non-stationary industry paths.
+
+\subsection{Industry Life-Cycle Dynamics}\label{subsec:lifecycle}
+
+The entry decision that determines aggregate growth also governs how individual industries evolve over their life cycles. The following proposition characterizes the resulting dynamics of surviving industries and connects its analytical implications to the empirical patterns documented in Section~\ref{sec:motivation}.
+
+Let \(\tilde m\) denote the gap of an oligopoly drawn from the stationary oligopoly cross-section, and let \(\tilde m_\Delta\) denote its gap after an interval \(\Delta\), conditional on remaining active. Let \(\bar m_\varepsilon\) denote the average gap among surviving oligopolies older than \(\varepsilon\) in the stationary oligopoly cross-section, where oligopoly age begins when the first follower enters.
+
+The price comparison below uses the wage-adjusted industry price \(P_i/w\) introduced in Lemma~\ref{lem:static_pricing}. Since \(Y_{it} = \big(Y_t/w_t\big)\, /\, \big(N_t(P_{it}/w_t)\big)\) and \(Y_t/w_t\) is constant in a stationary equilibrium, industry output holding \(N\) fixed moves inversely with its wage-adjusted price.
+
+\begin{proposition}[Industry life-cycle dynamics in a stationary equilibrium]
+\label{prop:lifecycle}
+Consider a stationary symmetric Markov-perfect equilibrium with a positive oligopoly share and a positive mean oligopoly gap, \(1-\mu^M>0\) and \(\bar m>0\).
+
+\begin{enumerate}[(i)]
+
+\item Let \(q_a^M\) denote the monopolist's quality at monopoly age \(a\), measured from industry creation. Conditional on remaining an active monopoly, quality growth slows with age and converges to zero. Define \(g_q^M(a)\equiv\lim_{\Delta\downarrow0}\Delta^{-1}\,\mathbb E[\ln q^M_{a+\Delta}-\ln q^M_a\mid\) active monopoly at age \(a+\Delta]\). Then \(g_q^M(a)\searrow0\) as \(a\to\infty\).
+
+\item Technology gaps widen on average over a short interval when surviving oligopolies drawn from the stationary cross-section are followed forward. In particular, \(\lim_{\Delta\downarrow0}\Delta^{-1}\,\mathbb E[\tilde m_\Delta-\tilde m]=\gamma\bar m>0\). Moreover, surviving oligopolies older than a sufficiently small cutoff have a higher average gap than the oligopoly cross-section as a whole. For all sufficiently small \(\varepsilon>0\), \(\bar m_\varepsilon>\bar m\).
+
+\item Wage-adjusted industry price and industry output holding \(N\) fixed are constant throughout the monopoly stage. If an industry enters the oligopoly stage at calendar date \(\tau_O\) and remains active through oligopoly ages \(0\leq a_1\leq a_2\), then \(P_{i,\tau_O+a_2}/w_{\tau_O+a_2}\leq P_{i,\tau_O+a_1}/w_{\tau_O+a_1}\). Thus wage-adjusted price is weakly decreasing and industry output holding \(N\) fixed is weakly increasing throughout the oligopoly stage.
+
+\end{enumerate}
+\end{proposition}
+
+Proposition~\ref{prop:lifecycle} summarizes the industry-level forces behind the life-cycle patterns. Part~(i) shows that as a surviving monopolist extends its lead, the marginal gain from further innovation declines, so quality growth slows with age and converges to zero. Part~(ii) shows that industries enter the oligopoly stage at gap zero, so incumbent gaps must drift upward for the cross-sectional mean to remain stationary, and surviving oligopolies older than a small cutoff have above-average gaps. Part~(iii) shows that wage-adjusted price is constant during the monopoly stage and falls with every oligopoly-stage transition, whether leader innovation, follower entry, or follower catch-up, so output holding \(N\) fixed weakly rises along every surviving history.
+
+These results capture slowing monopoly innovation, widening oligopoly gaps, and falling wage-adjusted prices with rising output holding \(N\) fixed. The quantitative model traces the full cohort dynamics, producing rising firm counts, wage-adjusted prices that fall after an initial increase, innovation that declines from an early peak, and output holding \(N\) fixed that rises over most of the life cycle. I now turn to the efficiency of the industry creation margin.
+
+\subsection{Constrained Efficiency of Industry Creation}\label{subsec:planner}
+
+Proposition~\ref{prop:agggrowth} showed that aggregate growth depends on the stationary distribution of industries, which is shaped by entrants' choices between joining incumbent industries and creating new ones. A natural question is whether the equilibrium produces the right mix of industry creation and incumbent entry. To address this, I compare the equilibrium allocation with a constrained planner's benchmark and rewrite the entry decision in terms of state-specific cost thresholds. Let \(S\) index the incumbent industry state encountered by the entrant, where \(S=M\) denotes a monopoly and \(S=(m,n)\) denotes an oligopoly with gap \(m\) and \(n\) followers. Let \(\mu_S\) denote the stationary share of industries in state \(S\). The post-entry value \(v^f_{S+}\) is defined in Section~\ref{subsec:value}.
+
+The decentralized entry rule can equivalently be represented by a vector of state-specific thresholds \(\{\hat{\kappa}^{CE}_S\}_S\). Taking equilibrium values and stationary shares as given, these thresholds solve the following expected-surplus problem.
+\begin{equation}
+\max_{\{\hat{\kappa}_S\in[\underline{\kappa},\bar{\kappa}]\}_S}
+\sum_S \mu_S \left[
+  \int_{\underline{\kappa}}^{\hat{\kappa}_S} \bigl(v^M_1 - \kappa\bigr)\, dG(\kappa)
+  +
+  \int_{\hat{\kappa}_S}^{\bar{\kappa}} v^f_{S+}\, dG(\kappa)
+\right],
+\label{eq:private_entry_problem}
+\end{equation}
+where \(G\) is the distribution of market-initiation costs and \(v^M_1\) is the value of a new monopolist. For an interior cutoff in a state with positive stationary mass and positive density, the first-order condition \(\mu_S G'\bigl(\hat\kappa^{CE}_S\bigr)\left[-\hat\kappa^{CE}_S+v^M_1-v^f_{S+}\right]=0\) reduces, since \(\mu_S>0\) and \(G'(\hat\kappa^{CE}_S)>0\), to \(\hat\kappa^{CE}_S=v^M_1-v^f_{S+}\). At a boundary, this value differential is truncated to the support of \(G\) as in Supplementary Materials~\ref{app:entry_cutoffs}.
+
+I consider a constrained planner who intervenes only in the industry creation margin, choosing thresholds \(\{\hat{\kappa}^{SP}_S\}_S\) to maximize household lifetime utility along the induced balanced growth path, subject to the aggregate resource constraint and the stationary equilibrium conditions. Firms continue to optimize given the competitive environment they face. The planner internalizes that changing entry thresholds alters the stationary distribution, firm values, and innovation incentives through the equilibrium fixed point.
+
+For any threshold vector that induces a stationary equilibrium, let \(\mathcal{R}(\{\hat\kappa_S\}_S)\) denote the ratio of incumbent R\&D expenditure to aggregate output and \(\mathcal{K}(\{\hat\kappa_S\}_S)\) the ratio of market-initiation expenditure to output as defined in Supplementary Materials~\ref{app:market_clearing}, and let \(g(\{\hat\kappa_S\}_S)\) denote the implied aggregate growth rate. I compare the induced balanced growth paths at a common initial public knowledge level \(s^K_0\). Let \(Y_0(\{\hat\kappa_S\}_S\mid s^K_0)\) denote the aggregate output level implied by the stationary composition at that knowledge level. With log preferences and \(1-\mathcal{R}-\mathcal{K}>0\), the planner's welfare can be written as
+\begin{equation}
+W\bigl(\{\hat\kappa_S\}_S\mid s^K_0\bigr)=
+\frac{1}{\rho}\ln\!\left(Y_0\bigl(\{\hat\kappa_S\}_S\mid s^K_0\bigr)\left[1-\mathcal{R}\bigl(\{\hat\kappa_S\}_S\bigr)-\mathcal{K}\bigl(\{\hat\kappa_S\}_S\bigr)\right]\right)+\frac{1}{\rho^2}g\bigl(\{\hat\kappa_S\}_S\bigr).\label{eq:planner_objective}
+\end{equation}
+The first term in equation~\eqref{eq:planner_objective} captures the level of initial consumption, while the second captures the contribution of long-run growth to lifetime welfare. The coefficient \(1/\rho^2\) arises because a permanent one-unit increase in \(g\) raises consumption at all future dates. These linearly accumulating gains, discounted at rate \(\rho\), are worth \(1/\rho^2\).
+
+At an interior cutoff in state \(S\) where the induced stationary-equilibrium mapping is locally differentiable, and holding \(s^K_0\) fixed, the constrained planner's first-order condition can be written as
+\begin{equation}
+\frac{z}{\rho}\,\mu_S G'\bigl(\hat\kappa^{SP}_S\bigr)
+\left[
+  -\frac{1}{1 - \mathcal{R} - \mathcal{K}}\,\hat\kappa^{SP}_S
+  + \frac{1}{\rho}\ln\lambda
+\right]
++ \Phi_S = 0,
+\label{eq:planner_FOC}
+\end{equation}
+where all objects are evaluated at \(\{\hat\kappa^{SP}_S\}_S\). The factor \(z\mu_S\) is the flow of potential entrants who meet state-\(S\) industries, and \(1/\rho\) converts this permanent flow effect into a present value. \(G'(\hat\kappa^{SP}_S)\) weights the marginal entrant at the cutoff. The term \(\Phi_S\), defined in Supplementary Materials~\ref{app:planner_derivative}, collects the remaining equilibrium adjustment, including the effect of stationary composition on the initial output level at the common knowledge level.
+
+For a state with an interior decentralized cutoff, comparing the planner's first-order condition~\eqref{eq:planner_FOC} with the private optimality condition \(\hat\kappa^{CE}_S=v^M_1-v^f_{S+}\) reveals the sources of inefficiency in the decentralized equilibrium. At such a cutoff, the private entrant equates the market-initiation cost \(\hat{\kappa}^{CE}_S\) to the exact value differential \(v^M_1-v^f_{S+}\). The planner instead weighs the cost \(\hat{\kappa}^{SP}_S\) against the direct knowledge benefit \(\frac{\ln\lambda}{\rho}(1-\mathcal{R}-\mathcal{K})\), together with the equilibrium adjustment \(\Phi_S\). The planner's welfare derivative evaluated at the decentralized cutoff is
+\[\left.\frac{\partial W}{\partial\hat\kappa_S}\right|_{CE}
+=\frac{z}{\rho}\mu_SG'\bigl(\hat\kappa^{CE}_S\bigr)
+\left[\frac{\ln\lambda}{\rho}-\frac{v^M_1-v^f_{S+}}{1-\mathcal{R}-\mathcal{K}}\right]+\Phi_S.\]
+The bracketed term compares the permanent welfare benefit of the knowledge created by a new industry with the entrant's exact private value differential expressed in the same welfare units.
+
+Two forces shape the direct comparison. A \emph{knowledge externality} arises because the entrant cannot appropriate the full contribution of a new industry to aggregate knowledge. Expressed in welfare units, the entrant's private gain from creating a new industry rather than joining the incumbent is \(\frac{v^M_1-v^f_{S+}}{1-\mathcal{R}-\mathcal{K}}\), whereas the planner's direct benefit from the resulting knowledge step is \(\frac{\ln\lambda}{\rho}\). A \emph{creative-destruction externality} further limits the private value of appropriable returns. Private values are discounted at the effective rate \(\rho+\gamma=\rho+g_N+\delta\), reflecting dilution from industry growth and industry exit, while the knowledge created by a new industry persists after the originating industry exits or loses market share and is discounted only at \(\rho\). Both forces depress the private value of industry creation relative to its social value. I evaluate the combined state-specific comparison using the calibrated value functions in Section~\ref{subsec:quant_planner}.
+
+An \emph{equilibrium adjustment effect} completes the comparison. The term \(\Phi_S\) embeds the response of the initial output level, values, innovation policies, resource use, and industry shares when an entry threshold is perturbed. A local change in \(\hat\kappa_S\) affects not only the flow of entrants into state \(S\) but also the evolution of other states through the stationary distribution and the aggregate resource constraint. The sign of this adjustment is not determined analytically. In Section~\ref{subsec:quant_planner}, I evaluate it as part of the numerical welfare derivative at the decentralized cutoffs and determine whether the full equilibrium response reinforces or offsets the direct forces.
+
+\section{Quantitative Analysis}\label{sec:quant}
+
+This section disciplines the theoretical framework quantitatively. Given firms' innovation and entry policies, I solve for the value functions and stationary industry shares from systems of linear equations, as in the continuous-time approach of \citet{AchdouHHLM22}. I calibrate a stationary equilibrium to post-2000 U.S. moments, using 2000--2019 when available, and then use the calibrated economy to examine untargeted industry life-cycle patterns, the growth effects of entry composition and competition, and the size and policy implications of the entry wedge identified in Section~\ref{subsec:planner}.
+
+\subsection{Calibration}\label{subsec:calibration}
+
+For the quantitative analysis, I parameterize the distribution of market-initiation costs as follows. Let \(\kappa\) denote the cost of creating a new industry, and write \(\kappa = k \,\tilde{v}^M_1,\) where \(k\) is drawn from a transformed beta distribution with support \([0,0.9]\) and \(\tilde{v}^M_1\) is the value of a monopolist in the baseline equilibrium.\footnote{This normalization ties the support of market-initiation costs to the value of a new monopolist, which is convenient for comparing cutoffs across equilibria.} The baseline scale \(\tilde{v}^M_1\) is held fixed in all counterfactual exercises. The distribution of \(k\) is also held fixed except in the \(\hat{k}\) comparative static, which varies its mean while holding its standard deviation fixed at 0.1.
+
+I calibrate eight parameters to reflect the U.S. economy over the 20-year period starting in 2000. Table~\ref{tab:calibration} reports the parameter values. Two objects are selected externally. The rate of time preference \(\rho\) is set to 0.0038, the difference between the average Cleveland Fed 10-year real interest rate \citep{ClevelandFedRealRate} and average TFP growth, where TFP is measured using the utilization-adjusted series from \citet{Fernald14}. The exit-to-creation ratio is set to 0.929495 based on \citet{BrodaW10} and \citet{Adhami25}. At the calibrated equilibrium, this ratio and the equilibrium creation rate \(\gamma\) imply an industry exit rate \(\delta=0.0696\).\footnote{I approximate the annual exit probability as 0.929495, the average of the turnover ratios reported by \citet{BrodaW10} and \citet{Adhami25}, times the annual birth probability. For each candidate equilibrium, the industry creation rate \(\gamma\) implies an annual birth probability \(1-\exp(-\gamma)\). The corresponding continuous-time exit rate is \(\delta=-\ln\left[1-0.929495\left(1-\exp(-\gamma)\right)\right].\) The exit rate does not affect the variety-creation rate \(\gamma\), firm values, or entry decisions. It shifts only the level of \(g_N\), so I calibrate it coarsely.}
+
+\begin{table}[t!]
+\caption{Calibrated Parameters}\label{tab:calibration}
+\centering
+\begin{tabular}{c|c|l} \hline\hline
+\multicolumn{3}{l}{Externally calibrated}                               \\ \hline
+\(\rho\)    & 0.0038 & Time preference (10-year real rate \(-\) TFP growth)                \\
+\(\delta\)  & 0.0696 & Industry exit rate implied by the exit--creation ratio      \\ \hline\hline
+\multicolumn{3}{l}{Internally calibrated}                               \\ \hline
+\(\sigma\)  & 3.5344 & Elasticity of substitution                                      \\
+\(\lambda\) & 1.0127 & Innovation step size                                            \\
+\(\alpha\)  & 0.0586 & Multiplier of R\&D cost function                                \\
+\(\psi\)    & 1.9436 & Curvature of R\&D cost function                                 \\
+\(\hat{k}\) & 0.0302 & Mean of market-initiation cost divided by \(\tilde{v}^M_1\)       \\
+\(z\)       & 0.1268 & Potential entrant arrival rate                                  \\ \hline\hline
+\end{tabular}
+\end{table}
+
+The remaining six parameters, \(\{\sigma, \lambda, \alpha, \psi, \hat{k}, z\},\) are calibrated jointly to match the empirical moments in Table~\ref{tab:moments}. Supplementary Materials~\ref{app:calibration} provides the calibration procedure and the construction of each moment. While all parameters simultaneously affect all moments in general equilibrium, the following discussion identifies which data moments primarily pin down each parameter.
+
+The elasticity of substitution \(\sigma\) governs the intensity of static price competition, while the market-initiation cost parameter \(\hat{k}\) governs the extensive margin of entry. Together they determine the level and dispersion of within-industry competition. These parameters are primarily disciplined by the average cost-weighted markup and the cost-weighted dispersion of log markups. I compute markups on Compustat firms using the production approach of \citet{DeLoeckerEU20}, combining their industry-level output elasticities with firm-level sales and costs over 2000--2016.
+
+\begin{table}[t!]
+\caption{Targeted Moments}\label{tab:moments}
+\centering
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l|c|c|l@{}} \hline\hline
+ & Data & Model & Source \\ \hline
+Average TFP growth                       & 0.0086 & 0.0085 & \citet{Fernald14} (2000--2019) \\
+Cost-weighted average markup             & 1.4111 & 1.4247 & Compustat, DLEU (2000--2016) \\
+Cost-weighted S.D. of log markup         & 0.2640 & 0.2572 & Compustat, DLEU (2000--2016) \\
+Average R\&D/GDP                         & 0.0269 & 0.0268 & NCSES (2000--2019) \\
+Average innovation frequency             & 0.5057 & 0.5050 & DISCERN (2000--2019) \\
+Average brand entry rate                 & 0.0850 & 0.0857 & ALM (2007--2014) \\ \hline\hline
+\end{tabular*}\vspace{0.1cm} \begin{minipage}{\textwidth} \footnotesize \emph{Notes:} DLEU denotes \citet{DeLoeckerEU20}. NCSES denotes the National Center for Science and Engineering Statistics. DISCERN denotes the version 2.0.1 firm-level patent panel of \citet{DISCERN2} building on \citet{AroraBS21}. ALM denotes \citet{ArgenteLM24}. The brand entry target is a sales-weighted average of annual per-brand entry rates. \end{minipage}
+\end{table}
+
+The R\&D cost parameters \((\alpha,\psi)\) govern the cost of innovation for incumbents. I discipline them using average R\&D/GDP over 2000--2019 from \citet{NCSES2025} and the average innovation frequency constructed from DISCERN 2.0.1 \citep{DISCERN2}. In the model, both incumbent R\&D spending and market-creation costs are counted as R\&D, since both represent forms of innovation.\footnote{I first transform each firm's annual innovation rate \(h\) into its event probability \(1-\exp(-h)\) and then average those probabilities across active firms.}
+
+The step size \(\lambda\) primarily determines aggregate growth and is disciplined by average TFP growth. The arrival rate \(z\) governs the frequency of entrant arrivals. Since each arrival creates a new firm or brand, I match the model's average per-firm entry rate to the brand entry rate in \citet{ArgenteLM24}.
+
+\subsection{Industry Life-Cycle Patterns}\label{subsec:baseline}
+
+In the calibrated economy, industries accumulate firms, while total industry innovation rises early and then declines from its peak as they mature. The profiles in Figure~\ref{fig:ind_life} show that the calibrated economy produces life-cycle dynamics that are qualitatively consistent with the empirical evidence discussed in Section~\ref{sec:motivation}. Each panel shows the expected change in an industry variable over a 100-year period, conditional on survival. The output panel reports both actual cohort output and output holding the mass of industries fixed. Details of the calculation are provided in Supplementary Materials~\ref{app:lifecycle}.
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=\linewidth]{paper_lifecycle_2x2_100yr.pdf}
+    \caption{Industry Life-Cycle Patterns. The profiles condition on survival. Output and the wage-adjusted price are normalized at birth, while innovation is reported from age 0.1.}
+    \label{fig:ind_life}
+\end{figure}
+
+The top-left panel plots actual cohort output (dash-dotted), which includes revenue-share dilution as the mass of industries grows, and output holding \(N\) fixed (solid), which isolates the within-industry component. The distinction also matters for measurement, since a new model industry can be a market-creating brand within an existing statistical industry. Actual cohort output initially falls and then recovers toward its initial level by age 100, while output holding \(N\) fixed turns upward sooner and rises well above it, showing that within-industry expansion strengthens later in the life cycle.
+
+The top-right panel shows the expected change in industry prices, adjusted for wage inflation, relative to the initial level. I deflate the industry price index from Section~\ref{sec:model} by the wage to remove aggregate inflation. After an initial increase as industries move into oligopoly, the resulting series falls over the remainder of the life cycle as innovation reduces unit costs and competition intensifies, consistent with the evidence in \citet{GortK82}, \citet{Agarwal98}, and \citet{Filson01}.
+
+The bottom panels show firm counts rising throughout the life cycle while total industry innovation peaks around age four and then declines, consistent with \citet{AbernathyU78} and \citet{JovanovicW25}. Because the plotted rate sums over active firms, the growing firm count partly offsets declining innovation per firm. The model has no shakeout with declining firm counts as in \citet{Klepper96}. A fixed operating cost would generate one, as widening gaps push follower profits below the operating cost.
+
+These age profiles are not directly targeted in the calibration in Table~\ref{tab:moments}. Their qualitative consistency with the empirical patterns is therefore an untargeted check on the model's joint life-cycle dynamics. In particular, the quantitative exercise extends Proposition~\ref{prop:lifecycle} by tracing actual output, firm counts, and innovation over the full industry life cycle.
+
+\subsection{Comparative Statics}\label{subsec:comparative}
+
+To understand how the cross-sectional distribution of industries transmits parameter changes into aggregate growth, I conduct comparative statics with respect to parameters governing industry creation and competition. I first vary the potential entrant arrival rate \(z\) and the market-initiation cost parameter \(\hat{k}\), which control the intensity and cost of entry. I then vary the elasticity of substitution \(\sigma\), which governs the strength of within-industry competition.
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=\linewidth]{paper_compstat_z_km_1x2.pdf}%
+    \setlength{\abovecaptionskip}{0pt}
+    \caption{Comparative Statics: Changing \(z\) and \(\hat{k}\). Growth and its components use the left axis, and consumption-equivalent welfare gains use the right axis. Vertical dotted lines mark the calibrated values.}
+    \label{fig:comp_stat1}
+\end{figure}
+
+The left panel of Figure~\ref{fig:comp_stat1} shows how aggregate growth and its components respond to changes in \(z\). The net result is a U-shaped relationship between \(z\) and aggregate growth. As \(z\) increases, the variety creation rate \(\gamma\) rises, but the average innovation rates of monopolists and oligopoly followers decline. More potential entrants generate more new industries, but they also reduce incumbent profits through both between- and within-industry business-stealing effects, lowering the expected value of innovation and crowding out R\&D investment by incumbent firms. When \(z\) is low, increasing it reduces growth because the crowding-out effect dominates. Further increases beyond a threshold raise growth as the extensive-margin benefit from greater variety creation outweighs the loss from reduced incumbent innovation.
+
+The right panel varies the mean market-initiation cost \(\hat{k}\). Lowering \(\hat{k}\) makes new-industry creation more attractive, but the variety creation rate \(\gamma\) rises only modestly because entry choices are already close to corners. Entrants who meet monopolies continue to join, and entrants who meet oligopolies already create with high probability. The small increase in creation nevertheless corresponds to a large proportional decline in the residual flow of entrants joining oligopolies. Less crowding in follower tiers reshapes the patent races and the stationary cross-section. Follower catch-up becomes more frequent, average oligopoly gaps narrow, and the monopoly share rises slightly. The incumbent-innovation contribution to growth therefore rises, driven by more frequent follower catch-up and the shift in composition.
+
+These experiments carry a policy warning. In the calibrated economy, \(z\) lies on the downward-sloping segment of the U, so an indiscriminate increase in potential entrants would reduce growth, with intensified entry into existing industries lowering the incumbent-innovation contribution by more than the added variety creation contributes. Lowering \(\hat{k}\), by contrast, reallocates a fixed arrival flow away from joining existing oligopolies, and growth rises even though \(\gamma\) changes little. The growth consequences of firm entry therefore depend not only on how many potential entrants arrive but also on where they enter.
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[height=0.408615\linewidth]{paper_compstat_sigma_double_axis.pdf}%
+    \setlength{\abovecaptionskip}{0pt}
+    \caption{Comparative Statics: Changing \(\sigma\). Growth and its components use the left axis, and consumption-equivalent welfare gains use the right axis. The vertical dotted line marks the calibrated value.}
+    \label{fig:comp_stat2}
+\end{figure}
+
+Figure~\ref{fig:comp_stat2} reports comparative statics for the elasticity of substitution \(\sigma\). Both aggregate growth and the incumbent-innovation contribution rise from the calibrated value and are essentially flat near their maxima around \(\sigma=4.75\)--\(4.8\), before declining slightly over the remaining evaluated range. The variety-creation contribution changes little, so aggregate growth closely tracks the incumbent-innovation contribution. These patterns are consistent with stronger competition initially raising innovation incentives and, at higher values of \(\sigma\), lower appropriable rents offsetting that force. Welfare peaks near \(\sigma=4.5\), earlier than growth, because it reflects the output level and resource allocation as well as long-run growth.
+
+This shallow hump over the evaluated range echoes the inverted-U mechanism of \citet{AghionBBGH05}. In this model, competition also reallocates entry and reshapes the stationary distribution, although the quantitative response over the plotted range operates mainly through incumbent innovation.
+
+\subsection{Constrained Efficiency of Calibrated Economy}\label{subsec:quant_planner}
+
+I now use the constrained planner framework of Section~\ref{subsec:planner} to assess the local efficiency of variety creation in the calibrated economy. The goal is to evaluate the local welfare derivative with respect to each state-contingent entry cutoff at the decentralized equilibrium. I evaluate both components of the planner's welfare derivative, the direct term comparing \(\frac{\ln\lambda}{\rho}\) with \(\frac{v^M_1-v^f_{S+}}{1-\mathcal{R}-\mathcal{K}}\) and the equilibrium adjustment \(\Phi_S\), at the calibrated equilibrium.
+
+At the calibrated competitive equilibrium, the direct comparison favors additional industry creation. For every evaluated state, \(\frac{\ln\lambda}{\rho}>\frac{v^M_1-v^f_{S+}}{1-\mathcal{R}-\mathcal{K}}.\) Moreover, the unconstrained cutoff implied by the direct terms, \(\hat{\kappa}^{SP,\mathrm{direct}}=\frac{1-\mathcal{R}-\mathcal{K}}{\rho}\ln\lambda\), exceeds the upper support \(\bar\kappa\) of market-initiation costs, so the corresponding feasible direct-term cutoff is \(\bar\kappa\). It strictly exceeds the decentralized cutoff in every evaluated state. The full welfare derivative additionally depends on \(\Phi_S\).
+
+To quantify the full equilibrium wedge, I compute the feasible local welfare effect of increasing the state-contingent probability of industry creation at the competitive equilibrium, holding \(s^K_0\) fixed. Using feasible one-sided reductions in joining probabilities and fully re-solving the equilibrium, I find a positive derivative for the common monopoly entry margin and for a set of evaluated oligopoly states. The associated monopoly and oligopoly states together account for 78.81\% of stationary mass, while evaluated oligopoly states with a negative derivative account for 19.81\%.\footnote{States below the numerical evaluation threshold account for the remaining 1.39\% of stationary mass.} The largest negative state has stationary mass 3.65\%. Thus, the welfare gain from expanding variety creation is positive over most of the stationary distribution, while equilibrium adjustments favor less creation in a subset of oligopoly states.
+
+I also separate the direct externalities from the equilibrium adjustment effect. When innovation rates, initial output, and industry shares are held fixed at their competitive values, the derivative is positive in every evaluated state. The direct knowledge and creative-destruction externalities therefore favor additional variety creation everywhere. Allowing innovation rates, initial output, and industry shares to adjust reverses the sign in a subset of oligopoly states, reflecting the fact that changing creation thresholds also changes incumbent innovation incentives and the composition of industries.
+
+At the decentralized equilibrium, a marginal increase in variety creation raises welfare in states accounting for most of the stationary distribution. The implied underprovision operates not only on the number of new industries but also on the competitive environment within existing ones, since heavier entry into mature oligopolies intensifies business stealing and weakens incumbents' innovation incentives. Whether a feasible policy instrument can close this wedge depends on where the responsive margins lie, which the next subsection examines.
+
+\subsection{Policy Experiments: Variety Creation versus Incumbent R\&D}\label{subsec:policy}
+
+The constrained efficiency analysis in Section~\ref{subsec:quant_planner} established a local wedge between the private and social returns to industry creation, with the planner's welfare derivative favoring more creation in states accounting for most of the stationary distribution. Motivated by this wedge, I compare two policy instruments that operate on different margins of the innovation process. Both are financed through lump-sum taxes on the representative household.
+\begin{enumerate}
+    \item \emph{Policy 1 (P1): Rewarding successful R\&D investment.} A firm receives a subsidy equal to \(b_r \Delta V\) upon a successful innovation, where \(b_r \in [0,1)\) is the subsidy rate and \(\Delta V\) is the value increase resulting from the innovation.
+    \item \emph{Policy 2 (P2): Rewarding variety creation.} A potential entrant receives a subsidy equal to \(b_i v^M_1\) if it chooses to start a new industry, where \(b_i \in [0,1)\) is the subsidy rate and \(v^M_1\) is the value of a new monopolist.
+\end{enumerate}
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[height=0.408615\linewidth]{paper_policy_combined_double_axis.pdf}%
+    \setlength{\abovecaptionskip}{0pt}
+    \caption{Policy Comparison: Rewarding Incumbent R\&D and Variety Creation. Black lines show Policy~1 and red lines show Policy~2. Growth and its components use the left axis, and consumption-equivalent welfare gains use the right axis. The vertical line marks the point at which each instrument costs one percent of output.}
+    \label{fig:policy}
+\end{figure}
+
+Figure~\ref{fig:policy} shows comparative statics for both policies across a range of fiscal costs as shares of output. The incumbent series plots the growth contribution of monopolist innovation and follower catch-up rather than total incumbent R\&D spending. Under Policy~2, the variety-creation and incumbent components rise by similar percentages. Because the incumbent component is roughly eight times larger at the baseline, however, its absolute change accounts for most of the growth response. Policy~1 directly subsidizes the monopolist innovation and follower catch-up margins that enter this component.
+ 
+To gauge the relative strength of the two instruments rather than to identify an optimal policy, I compare them at a common fiscal cost, choosing subsidy rates such that government expenditures on each policy amount to 1\% of output in the stationary equilibrium. Under Policy~1, this corresponds to rewarding \(b_r \approx 0.165\) of the value increase from a successful incumbent innovation. At this level, the long-run growth rate rises by about 13.71 basis points and balanced-growth-path welfare increases by 42.27\% in consumption-equivalent terms. Under Policy~2, the same fiscal-cost constraint implies a rate \(b_i \approx 0.075\), applied to the new monopolist value. Even though variety creation itself responds only modestly, the growth rate increases by about 0.95 basis points and balanced-growth-path welfare rises by 1.98\%. Policy~1 therefore produces larger gains in both growth and welfare under the equal-cost comparison.
+
+Policy~2 shifts every creation cutoff up by approximately \(b_i v^M_1\), so it changes behavior only for entrants whose cost draw falls between the old and the new cutoff. In the calibrated economy few draws lie there, because entry choices are polarized by industry stage. Virtually all potential entrants who arrive at monopolies join them because the value of joining exceeds even the subsidized value of creating. Among entrants who meet oligopolies, 94.3\% already create before the policy and the probability rises only to 95.9\%. Accordingly, \(\gamma\) rises from 0.075 to 0.076. Induced creation accounts for about 1.2\% of the subsidized creation flow, so almost all of the expenditure is inframarginal, paid to entrants who would have created without the subsidy.
+
+At the calibrated equilibrium, a uniform creation subsidy therefore has limited leverage over the margin it targets. The wedge identified in Section~\ref{subsec:quant_planner} is state-contingent, so fully correcting it would require targeting that a proportional creation subsidy does not provide. Policy~1 is more effective in the equal-cost experiment because it operates directly across the active incumbent-innovation margins.
+
+\section{Conclusion}\label{sec:conclusion}
+A Schumpeterian growth model in which endogenous industry life cycles shape aggregate growth emerges from a single new margin, the entry choice between joining an existing industry and creating a new one. Industries are born as monopolies, attract followers who compete in patent races, and mature as technology gaps widen and innovation incentives weaken. Individual industries follow non-stationary paths, but their cross-sectional distribution over life-cycle states is stationary in equilibrium, so steady aggregate growth coexists with continual turnover of the industries that drive it. The stationary distribution maps into the growth rate through an explicit decomposition into variety creation, frontier innovation, and catch-up innovation, and it responds to entry conditions and to policy.
+
+In the calibrated economy, private entrants cannot fully appropriate the knowledge that a new industry adds, and the local welfare derivative favors more industry creation in states accounting for most of the stationary distribution. The endogenous cross-section also reshapes the response of growth to entry and to competition. Growth is U-shaped in the firm-entry rate, while its response to within-industry competition is shallow and hump-shaped over the evaluated range. Equal-cost policy experiments illustrate the resulting policy margin, the allocation of entry between existing and new industries, which is absent from fixed-industry frameworks. How strongly policy transmits through this margin depends on where entry decisions are responsive, and in the calibrated economy those decisions sit near corners, leaving a uniform creation subsidy largely inframarginal. These results arise in a model whose untargeted life-cycle dynamics are qualitatively consistent with the patterns documented in Section~\ref{sec:motivation}.
+
+The framework points to natural extensions. A version in which market-initiation costs evolve over time could help quantify how changing entry conditions contributed to the decline in U.S.\ business dynamism, and characterizing the optimal mix of incumbent R\&D and industry-creation subsidies would clarify how intervention depends on the economy's composition of young and mature industries. More broadly, understanding long-run growth requires taking seriously the extensive margin of industry creation, not only the intensive margin of R\&D within existing markets.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+During the preparation of this work the author used ChatGPT and Claude in order to edit the text for clarity and concision and to check the internal consistency of the manuscript. After using these tools, the author reviewed and edited the content as needed and takes full responsibility for the content of the publication.
+
+\newpage
+\setlength{\bibsep}{11pt}
+\bibliography{hynj_ref}
+
+\newpage
+\appendix
+\numberwithin{equation}{section}
+\begin{center}
+{\Large\bfseries Supplementary Materials}
+\end{center}
+
+\section{Proofs for Theoretical Results}
+
+\subsection{Proof of Lemma~\ref{lem:static_pricing}}
+
+\begin{proof}
+Since the final-good aggregator is Cobb-Douglas across industries, each industry receives expenditure \(\bar Y\).
+
+First consider a monopoly industry born at date \(\tau\). The monopolist has productivity \(\lambda^{s^K_\tau+\hat s}\) and the competitive fringe has \(\lambda^{s^K_\tau}\). Under the limit-pricing allocation specified in Section~\ref{subsec:firm_ind}, the monopolist charges the fringe's marginal cost,
+\[ p^M_{\hat s}=\frac{w}{\lambda^{s^K_\tau}}, \]
+and serves the entire industry demand. Thus
+\[ \Pi^M_{\hat s} = \left(1-\lambda^{-\hat s}\right)\bar Y,
+\qquad \pi^M_{\hat s}=1-\lambda^{-\hat s}\nearrow1,
+\qquad \pi^M_{\hat{s}+1}-\pi^M_{\hat{s}}=(1-\lambda^{-1})\lambda^{-\hat{s}} \searrow0.\]
+
+Now consider an oligopoly with gap \(m\) and \(n\) followers. Followers have productivity \(\lambda^{s_f}\) and the leader has productivity \(\lambda^{s_f+m}\). Given prices, firm \(j\) faces demand
+\[ y_j=\frac{p_j^{-\sigma}}{\sum_k p_k^{1-\sigma}}\bar Y. \]
+Let \(c_j\) denote firm \(j\)'s marginal cost and let \(B_j\equiv\sum_{k\neq j}p_k^{1-\sigma}>0\). Differentiating the firm's profit gives
+\[
+\operatorname{sgn}\!\left(\frac{\partial\Pi_j}{\partial p_j}\right)
+=
+\operatorname{sgn}\!\left\{
+c_jp_j^{1-\sigma}
++
+B_j\bigl[\sigma c_j-(\sigma-1)p_j\bigr]
+\right\}.
+\]
+The expression in braces is strictly decreasing from positive infinity to negative infinity as \(p_j\) increases, so each firm's profit is single-peaked in its own price and its pricing first-order condition characterizes its unique best response. Let \(\phi_{mn}\equiv p_{mn}/p_{-mn}\). In a symmetric equilibrium, these conditions give
+\[ \frac{p_{mn}}{w/\lambda^{s_f+m}} =
+\frac{\sigma n+\phi_{mn}^{1-\sigma}}{(\sigma-1)n}, \qquad
+\frac{p_{-mn}}{w/\lambda^{s_f}} = \frac{\sigma(\phi_{mn}^{1-\sigma}+n-1)+1}{(\sigma-1)(\phi_{mn}^{1-\sigma}+n-1)} . \]
+Taking the ratio gives
+\[ \phi_{mn} n\lambda^m \left( \sigma+\frac{1}{\phi_{mn}^{1-\sigma}+n-1} \right)
+= \sigma n+\phi_{mn}^{1-\sigma}. \tag{A.1} \]
+On \((0,\infty)\), the left-hand side is strictly increasing from zero to infinity, while the right-hand side is strictly decreasing from infinity to \(\sigma n\). Hence (A.1) has a unique positive solution. Together with the two pricing equations above, this proves existence and uniqueness of the symmetric pricing equilibrium. When \(m=0\), the solution is \(\phi_{0n}=1\). When \(m>0\), evaluating (A.1) at \(\phi=1\) gives \(\phi_{mn}<1\).
+
+Define
+\[ a_{mn}\equiv \phi_{mn}^{1-\sigma}. \]
+Then (A.1) becomes
+\[ \lambda^m a_{mn}^{-1/(\sigma-1)} \left( \sigma+\frac{1}{a_{mn}+n-1} \right)
+= \sigma+\frac{a_{mn}}{n}. \tag{A.2} \]
+The normalized profits are
+\[ \pi_{mn}=\frac{a_{mn}}{\sigma n+a_{mn}}, \qquad \pi_{-mn}=\frac{1}{\sigma(a_{mn}+n-1)+1}. \]
+
+Fix \(n\). In (A.2), for any fixed \(a\), the left-hand side increases with \(m\), while the right-hand side is unchanged. Since the left-hand side decreases in \(a\) and the right-hand side increases in \(a\), \(a_{mn}\) increases with \(m\). Therefore \(\pi_{mn}\) increases and \(\pi_{-mn}\) decreases with \(m\). Moreover, \(a_{mn}\to\infty\) as \(m\to\infty\), so
+\[ \pi_{mn}\nearrow1, \qquad \pi_{-mn}\searrow0.\]
+
+When \(m=0\), \(a_{0n}=1\), so \(\pi_{0n}=1/(\sigma n+1)\). Since \(a_{mn}\geq1\), the displayed profit formulas imply
+\[
+\pi_{-mn}\leq\pi_{0n}\leq\pi_{mn}
+\qquad\text{for }m\geq1.
+\]
+
+Next fix \(m\) and let \(n\) vary. Let \(r_n\equiv a_{mn}/n\). Then
+\[ \lambda^m(nr_n)^{-1/(\sigma-1)} \left( \sigma+\frac{1}{n(1+r_n)-1} \right)
+= \sigma+r_n . \tag{A.3} \]
+For fixed \(r_n\), the left-hand side decreases with \(n\). For fixed \(n\), it decreases with \(r_n\), while the right-hand side increases with \(r_n\). Hence \(r_n\) decreases with \(n\). Since
+\[
+\pi_{mn}=\frac{r_n}{\sigma+r_n},
+\]
+leader profit decreases with \(n\). Moreover, \(r_n\to0\), so \(\pi_{mn}\searrow0\).
+
+It remains to show that follower profits also decrease with \(n\). Rewrite (A.1) as
+\[ \lambda^m\phi=\frac{\sigma+\phi^{1-\sigma}/n}{\sigma+1/(\phi^{1-\sigma}+n-1)}. \tag{A.4}\]
+For fixed \(\phi\leq1\), let \(A\equiv\phi^{1-\sigma}\geq1\) and define
+\[H(n;A) \equiv \frac{\sigma+A/n}{\sigma+1/(A+n-1)} .\]
+Treating \(n\) continuously, \(H(n;A)\) is weakly decreasing in \(n\). Indeed,
+\(\partial H(n;A)/\partial n\leq0\) is equivalent to
+\[A(A+n-1)\bigl[\sigma(A+n-1)+1\bigr]\geq n(\sigma n+A),\]
+whose left-hand side minus right-hand side equals
+\[(A-1)\left(A^2\sigma+2An\sigma-A\sigma+A+n^2\sigma\right)\geq0.\]
+Thus, holding \(\phi\) fixed, the right-hand side of (A.4) decreases with \(n\). Since the left-hand side of (A.4) is increasing in \(\phi\), while the right-hand side is decreasing in \(\phi\), the equilibrium solution \(\phi_{mn}\) weakly decreases with \(n\). Therefore \(a_{mn}=\phi_{mn}^{1-\sigma}\) weakly increases with \(n\), and hence \(a_{mn}+n-1\) increases with \(n\). It follows that
+\[\pi_{-mn}=\frac{1}{\sigma(a_{mn}+n-1)+1}\]
+decreases with \(n\). Since \(a_{mn}+n-1\to\infty\) as \(n\to\infty\),
+\[\pi_{-mn}\searrow0 .\]
+
+Finally, in a monopoly,
+\[\frac{P^M(\tau)}{w}=\lambda^{-s^K_\tau},\]
+which is constant throughout the monopoly phase and decreases across birth cohorts as \(s^K_\tau\) rises. In an oligopoly, with \(b_{mn}\equiv a_{mn}+n-1\),
+\[\frac{P_{mn}(s_f)}{w}=
+\lambda^{-s_f}\frac{\sigma b_{mn}+1}{(\sigma-1)b_{mn}}(b_{mn}+1)^{1/(1-\sigma)} . \tag{A.5}\]
+The term multiplying \(\lambda^{-s_f}\) is decreasing in \(b_{mn}\). Since \(b_{mn}\) increases with both \(m\) and \(n\), the wage-adjusted industry price decreases in \(m\), \(n\), and \(s_f\).
+
+It remains to verify the price effect of follower catch-up, because that transition raises \(s_f\) but lowers \(m\). Using (A.1), the price can alternatively be written in terms of the leader's technology as
+\[\frac{P_{mn}(s_f)}{w}=\lambda^{-(s_f+m)}H_n(a_{mn}),\qquad H_n(a)\equiv
+\frac{\sigma n+a}{(\sigma-1)n}\left(\frac{a}{a+n}\right)^{1/(\sigma-1)}.\tag{A.6}\]
+For fixed \(n\), both positive factors in \(H_n(a)\) are strictly increasing in \(a\). Equation~(A.2) established that \(a_{mn}\) is strictly increasing in \(m\). Under a follower catch-up transition,
+\[(m,n,s_f)\longrightarrow(m-1,n,s_f+1),\]
+the leader's technology \(s_f+m\) is unchanged, whereas \(a_{mn}\) falls. Hence (A.6) shows that follower catch-up strictly lowers \(P/w\). Leader innovation lowers \(P/w\) by increasing \(m\), follower entry lowers it by increasing \(n\), and an innovation from a neck-and-neck state raises \(m\) from zero to one. Thus every feasible transition within the oligopoly phase strictly lowers the wage-adjusted industry price.
+
+Moreover, \(b_{mn}\to\infty\) as \(m\to\infty\) or \(n\to\infty\), and \(\lambda^{-s_f}\to0\) as \(s_f\to\infty\). Hence
+\[\frac{P_{mn}(s_f)}{w}\searrow0\]
+as \(m\to\infty\), \(n\to\infty\), or \(s_f\to\infty\).
+\end{proof}
+
+\subsection{Proof of Lemma~\ref{lem:value}}
+
+\begin{proof}
+Let
+\[\Psi(d)\equiv \max_{x\geq 0}\{-R(x)+xd\}. \]
+Under the maintained assumptions on \(R\), \(\Psi\) is increasing, \(\Psi(d)=0\) for \(d\leq 0\), and \(\Psi\) is strictly increasing for \(d>0\). The optimal innovation rate is increasing in \(d\) and is strictly positive if and only if \(d>0\).
+
+\medskip
+
+\noindent\textit{Part (i).}
+By Lemma~\ref{lem:static_pricing}, normalized flow profits are strictly between zero and one. Since R\&D costs are nonnegative,
+\[ v<\int_0^\infty e^{-(\rho+\gamma)t}dt=\frac{1}{\rho+\gamma}. \]
+The lower bound follows because a firm can choose zero R\&D and receive strictly positive flow profits while the industry is active. Hence
+\[0<v<\frac{1}{\rho+\gamma}.\]
+The value bound also implies that the discounted continuation value vanishes as the horizon tends to infinity. Together with the innovation first-order conditions, it implies a uniform bound \(\bar x<\infty\) on each firm's innovation rate. Entrant arrivals increase the follower count at a rate no greater than \(z\), so the follower count is dominated by its initial value plus a rate-\(z\) Poisson process. Conditional on that count, total innovation intensity is bounded by \((n_t+1)\bar x\). Its integrated intensity is finite on every finite horizon almost surely, so the induced state process is nonexplosive. Together with boundedness and the transversality condition, the standard verification argument identifies the Bellman solution with the expected discounted payoff.
+
+\medskip
+
+\noindent\textit{Part (ii).}
+The monopoly HJB is
+\[(\rho+\gamma+z\theta^M)v^M_{\hat{s}}=
+\pi^M_{\hat{s}}+\Psi(v^M_{\hat{s}+1}-v^M_{\hat{s}})+z\theta^Mv_{01}.\]
+Suppose \(v^M_{\hat{s}+1}\leq v^M_{\hat{s}}\). Then \(\Psi(v^M_{\hat{s}+1}-v^M_{\hat{s}})=0\), so
+\[(\rho+\gamma+z\theta^M)v^M_{\hat{s}}=\pi^M_{\hat{s}}+z\theta^Mv_{01}.\]
+But
+\[(\rho+\gamma+z\theta^M)v^M_{\hat{s}+1}=
+\pi^M_{\hat{s}+1}+\Psi(v^M_{\hat{s}+2}-v^M_{\hat{s}+1})+z\theta^Mv_{01}
+>\pi^M_{\hat{s}}+z\theta^Mv_{01},\]
+contradicting \(v^M_{\hat{s}+1}\leq v^M_{\hat{s}}\). Thus \(v^M_{\hat{s}}\) is strictly increasing.
+
+Since \(\{v^M_{\hat{s}}\}\) is increasing and bounded, it converges to some \(L\), with \(v^M_{\hat{s}+1}-v^M_{\hat{s}}\to 0\). Taking limits in the HJB and using \(\pi^M_{\hat{s}}\to 1\) gives
+\[L=\frac{1+z\theta^Mv_{01}}{\rho+\gamma+z\theta^M}.\]
+Also, \(v^M_{\hat{s}+1}-v^M_{\hat{s}}>0\) implies \(x^M_{\hat{s}}>0\), while \(v^M_{\hat{s}+1}-v^M_{\hat{s}}\to 0\) implies \(x^M_{\hat{s}}\to 0\).
+
+It remains to show that \(x^M_{\hat{s}}\) decreases. Define
+\[\Delta v^M_{\hat{s}}\equiv v^M_{\hat{s}+1}-v^M_{\hat{s}},
+\qquad\Delta\pi^M_{\hat{s}}\equiv \pi^M_{\hat{s}+1}-\pi^M_{\hat{s}}.\]
+Subtracting the HJB at \(\hat{s}\) from the HJB at \(\hat{s}+1\) gives
+\[(\rho+\gamma+z\theta^M)\Delta v^M_{\hat{s}}=
+\Delta\pi^M_{\hat{s}}+\Psi(\Delta v^M_{\hat{s}+1})-\Psi(\Delta v^M_{\hat{s}}).\]
+By Lemma~\ref{lem:static_pricing}, \(\Delta\pi^M_{\hat{s}}\) is decreasing. If
+\[\Delta v^M_{\hat{s}}>\Delta v^M_{\hat{s}+1}
+\quad\text{and}\quad\Delta v^M_{\hat{s}-1}\leq \Delta v^M_{\hat{s}},\]
+then
+\[\begin{aligned}
+(\rho+\gamma+z\theta^M)\Delta v^M_{\hat{s}}&=\Delta\pi^M_{\hat{s}}+\Psi(\Delta v^M_{\hat{s}+1})-\Psi(\Delta v^M_{\hat{s}}) \\
+&<\Delta\pi^M_{\hat{s}-1}+\Psi(\Delta v^M_{\hat{s}})-\Psi(\Delta v^M_{\hat{s}-1}) \\
+&=(\rho+\gamma+z\theta^M)\Delta v^M_{\hat{s}-1},
+\end{aligned}
+\]
+a contradiction. Hence any strict decline in \(\Delta v^M_{\hat{s}}\) propagates backward. Since \(\Delta v^M_{\hat{s}}>0\) and \(\Delta v^M_{\hat{s}}\to 0\), strict declines occur arbitrarily far out. Therefore
+\[\Delta v^M_{\hat{s}}>\Delta v^M_{\hat{s}+1}\qquad\text{for all }\hat{s}.\]
+Since the innovation rate is increasing in \(\Delta v^M_{\hat{s}}\), \(x^M_{\hat{s}}\) strictly decreases in \(\hat{s}\).
+
+\medskip
+
+\noindent\textit{Part (iii).}
+First fix \(m\geq1\) and let \(n\to\infty\). For \(K\geq 1\), define
+\[\tau_K\equiv \inf\{t\geq 0:\text{the gap exceeds }m+K\}.\]
+Before \(\tau_K\), the gap is at most \(m+K\) and the number of followers is at least \(n\). By Lemma~\ref{lem:static_pricing}, both leader and follower flow profits are therefore bounded above by \(\pi_{m+K,n}\), and for each fixed \(K\),
+\[\pi_{m+K,n}\to 0\qquad\text{as } n\to\infty.\]
+After \(\tau_K\), continuation values are bounded by \(\frac{1}{\rho+\gamma}\). Dropping R\&D costs,
+\[\max\{v_{mn},v_{-mn}\}\leq\frac{\pi_{m+K,n}}{\rho+\gamma}+\frac{1}{\rho+\gamma}\mathbb E\!\left[e^{-(\rho+\gamma)\tau_K}\right].\]
+To reach a gap above \(m+K\), the leader must obtain at least \(K\) successful innovations. Since the leader's innovation rate is bounded by \(\bar x\),
+\[\mathbb E\!\left[e^{-(\rho+\gamma)\tau_K}\right]
+\leq\left(\frac{\bar x}{\rho+\gamma+\bar x}\right)^K.\]
+Therefore,
+\[\limsup_{n\to\infty}\max\{v_{mn},v_{-mn}\}
+\leq\frac{1}{\rho+\gamma}\left(\frac{\bar x}{\rho+\gamma+\bar x}\right)^K.\]
+Letting \(K\to\infty\) gives
+\[v_{mn}\to 0,\qquad v_{-mn}\to 0\qquad\text{as }n\to\infty.\]
+Since the relevant value gains also converge to zero,
+\[x_{mn}\to 0,\qquad x_{-mn}\to 0\qquad\text{as }n\to\infty.\]
+The same stopping-time argument applied to a neck-and-neck state gives \(v_{0n}\to0\). Since \(v_{1n}\to0\), the value gain \(\max\{v_{1n}-v_{0n},0\}\) also converges to zero, and hence \(x_{0n}\to0\).
+
+Now fix \(n\) and let \(m\to\infty\). We first show that \(v_{-mn}\to 0\). For an integer \(\ell<m\), define
+\[\tau_\ell\equiv \inf\{t\geq 0:\text{the gap is at most }\ell\}.\]
+Before \(\tau_\ell\), the gap is larger than \(\ell\) and the number of followers is at least \(n\). By Lemma~\ref{lem:static_pricing}, follower flow profits are therefore bounded above by \(\pi_{-\ell n}\), and
+\[\pi_{-\ell n}\to 0\qquad\text{as }\ell\to\infty.\]
+Thus, dropping R\&D costs and using the bound on continuation values,
+\[v_{-mn}\leq\frac{\pi_{-\ell n}}{\rho+\gamma}+\frac{1}{\rho+\gamma}\mathbb E\!\left[e^{-(\rho+\gamma)\tau_\ell}\right].\]
+Let \(N_z(t)\) denote the number of potential-entrant arrivals by time \(t\). Since each joining entrant adds at most one follower, the follower count by time \(t\) is bounded above by \(n+N_z(t)\). Because each follower's innovation rate is at most \(\bar x\), the expected number of follower-tier innovations by time \(T\) is bounded above by
+\[\bar x\left(nT+\frac{zT^2}{2}\right).\]
+Reaching gap \(\ell\) from gap \(m\) requires at least \(m-\ell\) follower-tier innovations. Therefore,
+\[\Pr(\tau_\ell\leq T)\leq\frac{\bar x\left(nT+zT^2/2\right)}{m-\ell}.\]
+Moreover,
+\[\mathbb E\!\left[e^{-(\rho+\gamma)\tau_\ell}\right]
+\leq\Pr(\tau_\ell\leq T)+e^{-(\rho+\gamma)T}.\]
+Letting \(m\to\infty\) and then \(T\to\infty\) proves that
+\[\mathbb E\!\left[e^{-(\rho+\gamma)\tau_\ell}\right]\to0.\]
+Hence
+\[\limsup_{m\to\infty}v_{-mn}
+\leq
+\frac{\pi_{-\ell n}}{\rho+\gamma}.
+\]
+Letting \(\ell\to\infty\) gives
+\[
+v_{-mn}\to 0.
+\]
+Since both \(v_{-mn}\) and \(v_{-m+1,n}\) converge to zero,
+\[
+x_{-mn}\to 0.
+\]
+
+Finally consider the leader. Since \(v_{-m,n+1}\to 0\) and
+\(\bar{\kappa}<v^M_1\), entrants eventually strictly prefer creating a new industry to
+joining a sufficiently wide-gap oligopoly. Hence \(\theta_{mn}=0\) for all sufficiently large
+\(m\). By Lemma~\ref{lem:static_pricing}, \(\pi_{mn}\to 1\). Choosing zero R\&D in the leader's HJB gives
+\[
+(\rho+\gamma)v_{mn} \geq \pi_{mn} + nx_{-mn}(v_{m-1,n}-v_{mn}) + z\theta_{mn}(v_{m,n+1}-v_{mn}).
+\]
+The last two terms vanish because values are bounded, \(x_{-mn}\to 0\), and \(\theta_{mn}=0\)
+eventually. Hence
+\[
+\liminf_{m\to\infty}v_{mn}\geq \frac{1}{\rho+\gamma}.
+\]
+Together with part (i), this implies
+\[
+v_{mn}\to \frac{1}{\rho+\gamma}.
+\]
+Since \(v_{mn}\) and \(v_{m+1,n}\) converge to the same limit, \(x_{mn}\to 0\).
+
+\medskip
+
+\noindent\textit{Part (iv).}
+From part (iii), \(v_{0n}\to 0\) as \(n\to\infty\). Since \(\bar{\kappa}<v^M_1\), choose
+\(N\) large enough such that
+\[
+\sup_{n'\geq N}v_{0n'}<v^M_1-\bar{\kappa},
+\qquad
+\sup_{n'\geq N}\frac{\pi_{0n'}}{\rho+\gamma}<v^M_1-\bar{\kappa}.
+\]
+Consider a follower in state \((m,n)\) with \(m\geq1\) and \(n\geq N\). Before reaching neck-and-neck, its flow payoff is bounded above by \(\pi_{0n}\) because Lemma~\ref{lem:static_pricing} implies
+\[
+\pi_{-m'n'}\leq \pi_{0n'}\leq \pi_{0n}
+\qquad\text{for all }m'\geq1,\ n'\geq n.
+\]
+After reaching neck-and-neck, its continuation value is bounded above by \(\sup_{n'\geq n}v_{0n'}\). Hence
+\[
+v_{-mn}
+\leq
+\max\left\{
+\frac{\pi_{0n}}{\rho+\gamma},
+\sup_{n'\geq n}v_{0n'}
+\right\}
+<
+v^M_1-\bar{\kappa}.
+\]
+Thus, for every \(n\geq N\),
+\[
+v_{0,n+1}<v^M_1-\bar{\kappa},
+\qquad
+v_{-m,n+1}<v^M_1-\bar{\kappa}
+\quad\text{for every }m\geq1.
+\]
+Even an entrant with the highest creation cost \(\bar{\kappa}\) strictly prefers creating
+a new industry to joining. Therefore there exists a finite \(n^\ast\geq 1\) such that
+\[
+\theta_{mn}=0
+\qquad
+\text{for all }m\text{ and all }n\geq n^\ast.
+\]
+\end{proof}
+
+\subsection{Proof of Lemma~\ref{lem:levels}}
+
+\begin{proof}
+In a stationary equilibrium, \(\delta+g_N=\gamma\). Multiplying the state-level Kolmogorov forward equations by the corresponding technology levels, summing over states, and using the finite-first-moment condition yields the four equations below.
+\begin{align*}
+\mu^M\dot{\bar{s}}^M_t
+&=-(z\theta^M+\gamma)\mu^M\bar{s}^M_t+\gamma(s^K_t+1)+\sum_{\hat{s}=1}^\infty \mu^M_{\hat{s}}x^M_{\hat{s}},\\
+\mu^M\dot{\bar{s}}^{cf}_t
+&=-(z\theta^M+\gamma)\mu^M\bar{s}^{cf}_t+\gamma s^K_t,\\
+(1-\mu^M)\dot{\bar{s}}^f_t
+&=-\gamma(1-\mu^M)\bar{s}^f_t+z\theta^M\mu^M\bar{s}^M_t+\sum_{n=1}^{n^\ast}\sum_{m=1}^\infty n x_{-mn}\mu_{mn},\\
+(1-\mu^M)\dot{\bar{s}}^l_t
+&=-\gamma(1-\mu^M)\bar{s}^l_t+z\theta^M\mu^M\bar{s}^M_t+\sum_{n=1}^{n^\ast}\left[(n+1)x_{0n}\mu_{0n}+\sum_{m=1}^\infty x_{mn}\mu_{mn}\right] .
+\end{align*}
+Using \(s^K_t=\mu^M\bar{s}^M_t+(1-\mu^M)\bar{s}^f_t,\)
+the first and third equations imply
+\[
+\dot{s}^K_t=\gamma+\sum_{\hat{s}=1}^\infty \mu^M_{\hat{s}}x^M_{\hat{s}}+\sum_{n=1}^{n^\ast}\sum_{m=1}^\infty n x_{-mn}\mu_{mn}.
+\]
+
+Next, subtracting the second equation from the first gives
+\[
+\mu^M\frac{d}{dt}(\bar{s}^M_t-\bar{s}^{cf}_t)
+=-(z\theta^M+\gamma)\mu^M(\bar{s}^M_t-\bar{s}^{cf}_t)+\gamma+\sum_{\hat{s}=1}^\infty \mu^M_{\hat{s}}x^M_{\hat{s}}.
+\]
+Since
+\[
+\bar{s}^M_t-\bar{s}^{cf}_t
+=
+\frac{1}{\mu^M}\sum_{\hat{s}=1}^\infty \mu^M_{\hat{s}}\hat{s}
+\]
+is constant in stationarity and
+\[
+\mu^M=\frac{\gamma}{z\theta^M+\gamma},
+\]
+we obtain
+\[
+\gamma(\bar{s}^M_t-\bar{s}^{cf}_t)=\gamma+\sum_{\hat{s}=1}^\infty \mu^M_{\hat{s}}x^M_{\hat{s}}.
+\]
+
+Finally, subtracting the third equation from the fourth gives
+\begin{align*}
+(1-\mu^M)\frac{d}{dt}(\bar{s}^l_t-\bar{s}^f_t)=&\ -\gamma(1-\mu^M)(\bar{s}^l_t-\bar{s}^f_t)\\
+&\ +\sum_{n=1}^{n^\ast}\left[(n+1)x_{0n}\mu_{0n}+\sum_{m=1}^\infty x_{mn}\mu_{mn}\right]-\sum_{n=1}^{n^\ast}\sum_{m=1}^\infty n x_{-mn}\mu_{mn}.
+\end{align*}
+Since
+\[
+\bar{s}^l_t-\bar{s}^f_t
+=
+\bar m
+=
+\frac{1}{1-\mu^M}
+\sum_{n=1}^{n^\ast}\sum_{m=0}^\infty \mu_{mn}m
+\]
+is constant in stationarity,
+\[
+\gamma(1-\mu^M)(\bar{s}^l_t-\bar{s}^f_t)
+=
+\gamma(1-\mu^M)\bar m
+=
+\sum_{n=1}^{n^\ast}\left[(n+1)x_{0n}\mu_{0n}+\sum_{m=1}^\infty x_{mn}\mu_{mn}\right]-\sum_{n=1}^{n^\ast}\sum_{m=1}^\infty n x_{-mn}\mu_{mn}.
+\]
+\end{proof}
+
+\subsection{Proof of Proposition~\ref{prop:agggrowth}}
+
+\begin{proof}
+A monopoly born at time \(\tau\) has output
+\[
+Y^M(\hat{s},\tau)=\frac{\bar Y_t}{w_t}\lambda^{s^K_\tau},
+\]
+and an oligopoly with follower technology \(s^f\) has output
+\[
+Y_{mn}(s^f)=\tilde Y^f_{mn}\lambda^{s^f}\frac{\bar Y_t}{w_t},
+\]
+where \(\tilde Y^f_{mn}\) depends only on \((m,n)\). Since
+\[
+\bar Y_t=\exp\left(\frac{1}{N_t}\int_0^{N_t}\ln Y_{it}\,di\right),
+\]
+these output expressions imply
+\[
+\ln w_t
+=
+\ln\lambda\left[
+\mu^M\bar{s}^{cf}_t+(1-\mu^M)\bar{s}^f_t
+\right]
++
+\sum_{n=1}^{n^\ast}\sum_{m=0}^\infty \mu_{mn}\ln\tilde Y^f_{mn}.
+\]
+The last term is constant in a stationary equilibrium, so
+\[
+\dot{\ln w}_t
+=
+\ln\lambda\left[
+\mu^M\dot{\bar{s}}^{cf}_t+(1-\mu^M)\dot{\bar{s}}^f_t
+\right].
+\]
+The labor-market condition implies that \(\bar Y_t/w_t\) grows at rate \(-g_N\). Hence
+\[
+g_t=\dot{\ln Y}_t
+=g_N+\dot{\ln\bar Y}_t
+=\dot{\ln w}_t.
+\]
+Therefore
+\[
+g_t
+=
+\ln\lambda\left[
+\mu^M\dot{\bar{s}}^{cf}_t+(1-\mu^M)\dot{\bar{s}}^f_t
+\right].
+\]
+
+From the level equations in Lemma~\ref{lem:levels},
+\begin{align*}
+\mu^M\dot{\bar{s}}^{cf}_t
+&=-(z\theta^M+\gamma)\mu^M\bar{s}^{cf}_t+\gamma s^K_t,\\
+(1-\mu^M)\dot{\bar{s}}^f_t
+&=-\gamma(1-\mu^M)\bar{s}^f_t
++z\theta^M\mu^M\bar{s}^M_t+\sum_{n=1}^{n^\ast}\sum_{m=1}^\infty n x_{-mn}\mu_{mn}.
+\end{align*}
+Adding them and using
+\[
+s^K_t=\mu^M\bar{s}^M_t+(1-\mu^M)\bar{s}^f_t,
+\qquad
+\mu^M=\frac{\gamma}{z\theta^M+\gamma},
+\]
+gives
+\[
+\mu^M\dot{\bar{s}}^{cf}_t+(1-\mu^M)\dot{\bar{s}}^f_t
+=
+\gamma(\bar{s}^M_t-\bar{s}^{cf}_t)+\sum_{n=1}^{n^\ast}\sum_{m=1}^\infty n x_{-mn}\mu_{mn}.
+\]
+By Lemma~\ref{lem:levels},
+\[
+\gamma(\bar{s}^M_t-\bar{s}^{cf}_t)=\gamma+\sum_{\hat{s}=1}^\infty \mu^M_{\hat{s}}x^M_{\hat{s}}.
+\]
+Thus
+\[ g=\ln\lambda\left(\gamma+\sum_{\hat{s}=1}^\infty \mu^M_{\hat{s}}x^M_{\hat{s}}+\sum_{n=1}^{n^\ast}\sum_{m=1}^\infty n x_{-mn}\mu_{mn}\right). \]
+The equality \(g=\ln\lambda\cdot \dot{s}^K\) follows directly from Lemma~\ref{lem:levels}.
+
+Finally, Lemma~\ref{lem:levels} implies
+\[ \gamma(1-\mu^M)\bar m=\sum_{n=1}^{n^\ast}\left[(n+1)x_{0n}\mu_{0n}+\sum_{m=1}^\infty x_{mn}\mu_{mn}\right]-\sum_{n=1}^{n^\ast}\sum_{m=1}^\infty n x_{-mn}\mu_{mn}. \]
+Substituting this into the expression for \(g\) yields
+\[ g = \ln\lambda\left( \gamma +\sum_{\hat{s}=1}^\infty \mu^M_{\hat{s}}x^M_{\hat{s}}
++\sum_{n=1}^{n^\ast} \left[(n+1)x_{0n}\mu_{0n} +\sum_{m=1}^\infty x_{mn}\mu_{mn}\right]
+-\gamma(1-\mu^M)\bar m \right). \]
+\end{proof}
+
+\subsection{Proof of Proposition~\ref{prop:lifecycle}}
+
+\begin{proof}
+For part~(i), let \(\hat s_a\) denote the monopoly gap at age \(a\). The exit
+hazard \(\delta\) and the monopoly-to-oligopoly hazard \(z\theta^M\) are
+independent of \(\hat s_a\). Conditioning on remaining an active monopoly
+therefore leaves the monopolist's pure-birth innovation process unchanged.
+This independence also turns the conditioning at age \(a+\Delta\) in the
+definition of \(g_q^M(a)\) into conditioning at age \(a\) as
+\(\Delta\downarrow0\). Since each innovation raises log quality by
+\(\ln\lambda\),
+\[
+g_q^M(a)
+=
+\ln\lambda\,
+\mathbb E\!\left[
+x^M_{\hat s_a}
+\,\middle|\,
+\textnormal{active monopoly at age }a
+\right].
+\]
+Under this conditional process, \(\hat s_a\) is nondecreasing and tends to
+infinity almost surely. Lemma~\ref{lem:value} shows that
+\(x^M_{\hat s}\) decreases to zero with \(\hat s\). The conditional
+expectation therefore decreases with age, and bounded convergence gives
+\(g_q^M(a)\to0\).
+
+For part~(ii), first note that \(z>0\) and the finite follower bound in
+Lemma~\ref{lem:value} imply \(\gamma>0\). If
+\(\gamma=0\), the variety-creation equation would require
+\(\theta(S)=1\) at every state with positive stationary mass. Since
+\(\theta_{m,n^\ast}=0\), the stationary flow equations can then be summed over
+gaps and applied recursively from \(n^\ast\) to eliminate all oligopoly mass.
+Bounded innovation rates ensure that the boundary flows vanish in these sums.
+The share restriction would then imply \(\mu^M=1\), while the
+variety-creation equation would imply \(\theta^M=1\). Summing the stationary
+monopoly flow equations would give \(0=-z\theta^M\mu^M\), a contradiction.
+Summing the monopoly flow equations when \(\gamma>0\) gives
+\[
+z\theta^M\mu^M=\gamma(1-\mu^M).
+\]
+
+Let \(\hat m_a\) denote the gap of an oligopoly at oligopoly age \(a\), and
+define
+\[
+f(a)
+\equiv
+\mathbb E\!\left[
+\hat m_a
+\,\middle|\,
+\textnormal{active at oligopoly age }a
+\right].
+\]
+Since exit is state independent, conditioning on remaining active does not
+alter the within-oligopoly transition process.
+The inflow into the oligopoly stage at date \(t-a\) is
+\(z\theta^M\mu^M N_{t-a}\). After accounting for survival through age \(a\)
+and normalizing by the current oligopoly mass, the stationary age density is
+\[
+\frac{z\theta^M\mu^M}{1-\mu^M}
+\frac{N_{t-a}}{N_t}e^{-\delta a}
+=
+\gamma e^{-(g_N+\delta)a}
+=
+\gamma e^{-\gamma a}.
+\]
+Thus the oligopoly age \(U\) in the stationary cross-section satisfies
+\[
+U\sim\operatorname{Exp}(\gamma),
+\qquad
+\bar m=\mathbb E[f(U)],
+\qquad
+\bar m_\varepsilon=\mathbb E[f(U)\mid U>\varepsilon].
+\]
+Lemma~\ref{lem:value} and the innovation first-order conditions give the
+uniform bound
+\[
+\bar x
+\equiv
+\left[
+\frac{1}{\alpha(\rho+\gamma)}
+\right]^{1/(\psi-1)}
+\]
+on individual innovation rates. Since \(n\leq n^\ast\), it follows that
+\[
+f(a)\leq(n^\ast+1)\bar x a.
+\]
+Consequently,
+\[
+\bar m
+\leq
+\int_0^\infty
+\gamma e^{-\gamma a}(n^\ast+1)\bar x a\,da
+=
+\frac{(n^\ast+1)\bar x}{\gamma}
+<
+\infty.
+\]
+
+If \(m=0\), an innovation by any of the \(n+1\) neck-and-neck firms creates a
+one-step gap, so
+\[
+\lim_{\Delta\downarrow0}\frac{1}{\Delta}
+\mathbb E\!\left[
+\tilde m_\Delta-\tilde m
+\,\middle|\,
+(\tilde m,\tilde n)=(0,n)
+\right]
+=(n+1)x_{0n}.
+\]
+If \(m\geq1\), leader innovation widens the gap by one and follower innovation
+narrows it by one, so
+\[
+\lim_{\Delta\downarrow0}\frac{1}{\Delta}
+\mathbb E\!\left[
+\tilde m_\Delta-\tilde m
+\,\middle|\,
+(\tilde m,\tilde n)=(m,n)
+\right]
+=x_{mn}-nx_{-mn}.
+\]
+Taking expectations over the stationary cross-section conditional on
+oligopoly gives
+\[
+\begin{aligned}
+\lim_{\Delta\downarrow0}\frac{1}{\Delta}
+\mathbb E[\tilde m_\Delta-\tilde m]
+=\frac{1}{1-\mu^M}\Bigg[
+&\sum_{n=1}^{n^\ast}(n+1)x_{0n}\mu_{0n}
++\sum_{n=1}^{n^\ast}\sum_{m=1}^{\infty}x_{mn}\mu_{mn}\\
+&-\sum_{n=1}^{n^\ast}\sum_{m=1}^{\infty}nx_{-mn}\mu_{mn}
+\Bigg].
+\end{aligned}
+\]
+By Lemma~\ref{lem:levels}, the bracketed term equals
+\(\gamma(1-\mu^M)\bar m\). Since \(\gamma>0\) and \(\bar m>0\),
+this proves the first statement in part~(ii).
+
+For the second statement, the bound on \(f(a)\) implies \(f(a)\to0\) as
+\(a\downarrow0\). For any \(\varepsilon>0\),
+\[
+\bar m
+=(1-e^{-\gamma\varepsilon})
+\mathbb E[f(U)\mid U\leq\varepsilon]
++e^{-\gamma\varepsilon}\bar m_\varepsilon.
+\]
+Therefore,
+\[
+0
+\leq
+\mathbb E[f(U)\mid U\leq\varepsilon]
+\leq
+(n^\ast+1)\bar x\varepsilon
+\longrightarrow
+0
+\qquad\textnormal{as }\varepsilon\downarrow0.
+\]
+Because \(\bar m>0\), this conditional mean is below \(\bar m\) for all
+sufficiently small \(\varepsilon>0\). Rearranging the mixture identity gives
+\[
+\bar m_\varepsilon-\bar m
+=
+\frac{1-e^{-\gamma\varepsilon}}{e^{-\gamma\varepsilon}}
+\left\{
+\bar m-\mathbb E[f(U)\mid U\leq\varepsilon]
+\right\}
+>
+0.
+\]
+
+For part~(iii), let \(\tau_M\) denote the industry's creation date.
+Lemma~\ref{lem:static_pricing} gives
+\[
+\frac{P_{i,\tau_M+a}}{w_{\tau_M+a}}
+=
+\lambda^{-s^K_{\tau_M}},
+\]
+so wage-adjusted price is constant throughout the monopoly stage. The output
+identity preceding the proposition then implies that industry output holding
+\(N\) fixed is also constant.
+
+After the industry enters the oligopoly stage, its state changes through
+leader innovation, follower entry, and follower catch-up.
+Lemma~\ref{lem:static_pricing} shows that each of these transitions lowers
+\(P_i/w\), while \(P_i/w\) remains constant when the state does not change.
+Hence, for any \(0\leq a_1\leq a_2\) through which the industry remains active,
+\[
+\frac{P_{i,\tau_O+a_2}}{w_{\tau_O+a_2}}
+\leq
+\frac{P_{i,\tau_O+a_1}}{w_{\tau_O+a_1}}.
+\]
+The inverse relationship between industry output holding \(N\) fixed and
+\(P_i/w\) then gives the output result.
+\end{proof}
+
+\subsection{Planner-Derivative Decomposition}\label{app:planner_derivative}
+
+Let
+\[
+\chi\equiv1-\mathcal{R}-\mathcal{K}.
+\]
+At a threshold vector at which the induced stationary-equilibrium mapping is locally differentiable, write
+\[
+Y_0
+=
+Y_0\bigl(\{\hat\kappa_{S'}\}_{S'}\mid s^K_0\bigr).
+\]
+Holding \(s^K_0\) and the other threshold coordinates fixed, define
+\[
+\Phi_S\equiv\frac{1}{\rho}\frac{d\ln Y_0}{d\hat\kappa_S}
+-\frac{1}{\rho\chi}\left[\frac{d\mathcal{R}}{d\hat\kappa_S}+\frac{d\mathcal{K}}{d\hat\kappa_S}-z\mu_S\hat\kappa_SG'(\hat\kappa_S)\right]
++\frac{1}{\rho^2}\left[\frac{dg}{d\hat\kappa_S}-z\mu_SG'(\hat\kappa_S)\ln\lambda\right].\]
+These are local derivatives of equilibrium outcomes with respect to the cutoff in state \(S\). The first term captures the change in initial output induced by the stationary composition. The bracketed adjustments isolate the direct resource cost and direct knowledge contribution of the marginal market-creation draw. The remaining terms collect the induced changes in incumbent R\&D, market-creation expenditure, growth, and the stationary distribution.
+
+\section{Stationary Equilibrium Conditions}\label{app:eqm_conditions}
+
+This section collects the equilibrium conditions omitted from the main text. The normalized Hamilton-Jacobi-Bellman equations and the potential entrant's problem are stated in the main text. I first derive the normalization of firm values, then state the entry cutoffs, Kolmogorov forward equations, and aggregate market-clearing conditions, and conclude with the definition of the stationary equilibrium.
+
+\subsection{Normalization of Firm Values}\label{app:HJB_normalization}
+
+Let
+\[
+v \equiv \frac{V}{\bar Y},
+\]
+with corresponding state subscripts and superscripts. Since
+\[
+\dot V=\dot v \bar Y+v\dot{\bar Y}
+\]
+and
+\[
+\frac{\dot{\bar Y}}{\bar Y}=g-g_N=r-\rho-g_N,
+\]
+we have
+\[
+rV-\dot V
+=
+rv\bar Y-\dot v\bar Y-v\dot{\bar Y}
+=
+(\rho+g_N)v\bar Y-\dot v\bar Y.
+\]
+In a stationary equilibrium, normalized values are time-invariant, so \(\dot v=0\).
+Dividing the unnormalized HJB equations by \(\bar Y\) therefore yields the normalized
+HJB equations in the main text, with effective discount rate \(\rho+g_N\). Equivalently,
+using \(g_N=\gamma-\delta\), moving the exit term to the left gives the effective discount
+rate \(\rho+\gamma\).
+
+\subsection{Entry Cutoffs and Variety Creation}\label{app:entry_cutoffs}
+
+Let \(\underline{\kappa}\) and \(\bar{\kappa}\) denote the lower and upper bounds of the
+industry-creation cost distribution \(G\). For any scalar \(a\), define
+\[
+[a]_{\underline{\kappa}}^{\bar{\kappa}}
+\equiv
+\min\{\bar{\kappa},\max\{\underline{\kappa},a\}\}.
+\]
+The industry-creation cutoff for a potential entrant who meets a monopoly is
+\[
+\hat{\kappa}_M
+=
+[v^M_1-v_{01}]_{\underline{\kappa}}^{\bar{\kappa}}.
+\]
+For an oligopoly with \(m=0\) and \(n<n^*\), the cutoff is
+\[
+\hat{\kappa}_{0n}
+=
+[v^M_1-v_{0,n+1}]_{\underline{\kappa}}^{\bar{\kappa}},
+\qquad n=1,\ldots,n^*-1.
+\]
+For an oligopoly with \(m\geq 1\) and \(n<n^*\), the cutoff is
+\[
+\hat{\kappa}_{mn}
+=
+[v^M_1-v_{-m,n+1}]_{\underline{\kappa}}^{\bar{\kappa}},
+\qquad m\geq 1,\quad n=1,\ldots,n^*-1.
+\]
+At \(n=n^*\), joining the incumbent industry is not profitable. I therefore set
+\[
+\hat{\kappa}_{m,n^*}=\bar{\kappa},
+\qquad
+\theta_{m,n^*}=0,
+\qquad m\geq 0.
+\]
+For any state \(S\), the probability that a potential entrant creates a new industry is
+\(G(\hat{\kappa}_S)\), while the probability that it joins the incumbent industry is
+\[
+\theta_S=1-G(\hat{\kappa}_S).
+\]
+Let
+\[
+\mu^M \equiv \sum_{\hat s=1}^{\infty}\mu^M_{\hat s}.
+\]
+The gross rate of new-industry creation is then
+\[
+\gamma
+=
+z\left[
+G(\hat{\kappa}_M)\mu^M
++
+\sum_{n=1}^{n^*}\sum_{m=0}^{\infty}
+G(\hat{\kappa}_{mn})\mu_{mn}
+\right].
+\]
+
+\subsection{Kolmogorov Forward Equations}\label{app:KFE}
+
+Let \(\mu^M_{\hat s}\) denote the share of monopoly industries with technology gap
+\(\hat s\), and let \(\mu_{mn}\) denote the share of oligopoly industries with technology gap
+\(m\) and \(n\) followers. Industry shares satisfy
+\begin{equation}
+\sum_{\hat s=1}^{\infty}\mu^M_{\hat s}
++
+\sum_{n=1}^{n^*}\sum_{m=0}^{\infty}\mu_{mn}
+=
+1.
+\label{eq:share_sum_app}
+\end{equation}
+The mass of industries grows at rate
+\begin{equation}
+g_N=\gamma-\delta.
+\label{eq:gN_app}
+\end{equation}
+
+The monopoly-state shares satisfy
+\begin{align}
+(\delta+g_N)\mu^M_1+\dot{\mu}^M_1
+&=
+\gamma
+-x^M_1\mu^M_1
+-z\theta^M\mu^M_1,
+\label{eq:muM1_app}\\
+(\delta+g_N)\mu^M_{\hat s}+\dot{\mu}^M_{\hat s}
+&=
+x^M_{\hat s-1}\mu^M_{\hat s-1}
+-x^M_{\hat s}\mu^M_{\hat s}
+-z\theta^M\mu^M_{\hat s},
+\qquad \hat s\geq 2.
+\label{eq:muMs_app}
+\end{align}
+
+The neck-and-neck oligopoly shares satisfy
+\begin{align}
+(\delta+g_N)\mu_{01}+\dot{\mu}_{01}
+&=
+x_{-1,1}\mu_{11}
+-2x_{01}\mu_{01}
++z\theta^M\mu^M
+-z\theta_{01}\mu_{01},
+\label{eq:mu01_app}\\
+(\delta+g_N)\mu_{0n}+\dot{\mu}_{0n}
+&=
+nx_{-1,n}\mu_{1n}
+-(n+1)x_{0n}\mu_{0n}
++z\theta_{0,n-1}\mu_{0,n-1}
+-z\theta_{0n}\mu_{0n},
+\nonumber\\
+&\hspace{8cm} n=2,\ldots,n^* .
+\label{eq:mu0n_app}
+\end{align}
+
+For positive-gap oligopolies with \(m=1\), the shares satisfy
+\begin{align}
+(\delta+g_N)\mu_{11}+\dot{\mu}_{11}
+&=
+2x_{01}\mu_{01}
++x_{-2,1}\mu_{21}
+-(x_{11}+x_{-1,1})\mu_{11}
+-z\theta_{11}\mu_{11},
+\label{eq:mu11_app}\\
+(\delta+g_N)\mu_{1n}+\dot{\mu}_{1n}
+&=
+(n+1)x_{0n}\mu_{0n}
++nx_{-2,n}\mu_{2n}
+-(x_{1n}+nx_{-1,n})\mu_{1n}
+\nonumber\\
+&\quad
++z\theta_{1,n-1}\mu_{1,n-1}
+-z\theta_{1n}\mu_{1n},
+\qquad n=2,\ldots,n^* .
+\label{eq:mu1n_app}
+\end{align}
+
+For positive-gap oligopolies with \(m\geq 2\), the shares satisfy
+\begin{align}
+(\delta+g_N)\mu_{m1}+\dot{\mu}_{m1}
+&=
+x_{m-1,1}\mu_{m-1,1}
++x_{-m-1,1}\mu_{m+1,1}
+-(x_{m1}+x_{-m1})\mu_{m1}
+-z\theta_{m1}\mu_{m1},
+\nonumber\\
+&\hspace{8cm} m\geq 2,
+\label{eq:mum1_app}\\
+(\delta+g_N)\mu_{mn}+\dot{\mu}_{mn}
+&=
+x_{m-1,n}\mu_{m-1,n}
++nx_{-m-1,n}\mu_{m+1,n}
+-(x_{mn}+nx_{-mn})\mu_{mn}
+\nonumber\\
+&\quad
++z\theta_{m,n-1}\mu_{m,n-1}
+-z\theta_{mn}\mu_{mn},
+\nonumber\\
+&\hspace{8cm} m\geq 2,\quad n=2,\ldots,n^* .
+\label{eq:mumn_app}
+\end{align}
+In a stationary equilibrium,
+\[
+\dot{\mu}^M_{\hat s}=0,
+\qquad
+\dot{\mu}_{mn}=0
+\]
+for all states.
+
+\subsection{Market-Clearing Conditions}\label{app:market_clearing}
+
+The aggregate resource constraint is
+\begin{equation}
+Y=C+Y(\mathcal R+\mathcal K),
+\label{eq:resource_app}
+\end{equation}
+where \(\mathcal R\) is the output share spent on incumbent R\&D and \(\mathcal K\) is the
+output share spent on market creation.
+
+The incumbent R\&D share is
+\begin{equation}
+\mathcal R
+=
+\sum_{\hat s=1}^{\infty}\mu^M_{\hat s}R(x^M_{\hat s})
++
+\sum_{n=1}^{n^*}\mu_{0n}(n+1)R(x_{0n})
++
+\sum_{n=1}^{n^*}\sum_{m=1}^{\infty}
+\mu_{mn}\left[
+R(x_{mn})+nR(x_{-mn})
+\right].
+\label{eq:R_share_app}
+\end{equation}
+The market-initiation expenditure share is
+\begin{equation}
+\mathcal K
+=
+z\left[
+\mu^M\int_{\underline{\kappa}}^{\hat{\kappa}_M}\kappa\,dG(\kappa)
++
+\sum_{n=1}^{n^*}\sum_{m=0}^{\infty}
+\mu_{mn}
+\int_{\underline{\kappa}}^{\hat{\kappa}_{mn}}\kappa\,dG(\kappa)
+\right].
+\label{eq:K_share_app}
+\end{equation}
+
+Let \(\ell^M_{\hat s}\), \(\ell_{0n}\), and \(\ell_{mn}\) denote the normalized labor demand
+per unit of industry revenue implied by the static pricing equilibrium in the corresponding
+states. Labor-market clearing is
+\begin{equation}
+1
+=
+\frac{Y}{w}
+\left[
+\sum_{\hat s=1}^{\infty}\mu^M_{\hat s}\ell^M_{\hat s}
++
+\sum_{n=1}^{n^*}\mu_{0n}\ell_{0n}
++
+\sum_{n=1}^{n^*}\sum_{m=1}^{\infty}\mu_{mn}\ell_{mn}
+\right].
+\label{eq:labor_app}
+\end{equation}
+
+For the welfare comparison, the initial output level can be recovered from the stationary composition at a common public knowledge level. The definition of public knowledge implies
+\[
+\mu^M\bar s^{cf}
++
+(1-\mu^M)\bar s^f
+=
+s^K
+-
+\sum_{\hat s=1}^{\infty}
+\hat s\,\mu^M_{\hat s}.
+\]
+Combining this identity with the industry-output expressions in the proof of Proposition~\ref{prop:agggrowth} gives
+\[
+\ln w
+=
+\ln\lambda
+\left(
+s^K
+-
+\sum_{\hat s=1}^{\infty}
+\hat s\,\mu^M_{\hat s}
+\right)
++
+\sum_{n=1}^{n^*}
+\sum_{m=0}^{\infty}
+\mu_{mn}\ln\widetilde Y^f_{mn}.
+\]
+Define the aggregate production-labor requirement per unit of revenue as
+\[
+\begin{aligned}
+\bar\ell
+={}&
+\sum_{\hat s=1}^{\infty}
+\mu^M_{\hat s}(1-\pi^M_{\hat s})
++
+\sum_{n=1}^{n^*}
+\mu_{0n}\left[1-(n+1)\pi_{0n}\right]\\
+&+
+\sum_{n=1}^{n^*}
+\sum_{m=1}^{\infty}
+\mu_{mn}
+\left(1-\pi_{mn}-n\pi_{-mn}\right).
+\end{aligned}
+\]
+Labor-market clearing gives \(Y/w=1/\bar\ell\). Therefore, at a common initial public knowledge level \(s^K_0\),
+\[
+\ln Y_0
+=
+\ln\lambda
+\left(
+s^K_0
+-
+\sum_{\hat s=1}^{\infty}
+\hat s\,\mu^M_{\hat s}
+\right)
++
+\sum_{n=1}^{n^*}
+\sum_{m=0}^{\infty}
+\mu_{mn}\ln\widetilde Y^f_{mn}
+-
+\ln\bar\ell.
+\]
+The level of the initial industry mass cancels from these expressions and can be normalized without affecting aggregate output.
+
+Aggregate household wealth equals the total market value of incumbent firms,
+\begin{equation}
+A
+=
+Y\left[
+\sum_{\hat s=1}^{\infty}\mu^M_{\hat s}v^M_{\hat s}
++
+\sum_{n=1}^{n^*}\mu_{0n}(n+1)v_{0n}
++
+\sum_{n=1}^{n^*}\sum_{m=1}^{\infty}
+\mu_{mn}\left(v_{mn}+n v_{-mn}\right)
+\right].
+\label{eq:asset_app}
+\end{equation}
+
+\subsection{Definition of Stationary Equilibrium}\label{app:eqm_definition}
+
+A stationary equilibrium consists of normalized firm values
+\[
+\{v^M_{\hat s}\}_{\hat s\geq 1},
+\qquad
+\{v_{0n}\}_{n=1}^{n^*},
+\qquad
+\{v_{mn},v_{-mn}\}_{m\geq 1,\ n=1,\ldots,n^*},
+\]
+innovation policies
+\[
+\{x^M_{\hat s}\}_{\hat s\geq 1},
+\qquad
+\{x_{0n}\}_{n=1}^{n^*},
+\qquad
+\{x_{mn},x_{-mn}\}_{m\geq 1,\ n=1,\ldots,n^*},
+\]
+entry decisions
+\[
+\theta^M,
+\qquad
+\{\theta_{mn}\}_{m\geq 0,\ n=1,\ldots,n^*},
+\]
+a stationary industry distribution
+\[
+\{\mu^M_{\hat s}\}_{\hat s\geq 1},
+\qquad
+\{\mu_{mn}\}_{m\geq 0,\ n=1,\ldots,n^*},
+\]
+and a balanced-growth path for aggregate variables such that the following conditions hold.
+
+\begin{enumerate}
+    \item Firm values are bounded solutions of the normalized HJB equations stated in the main text and satisfy the transversality condition. Innovation policies attain the corresponding maxima.
+    \item Potential entrants optimally choose whether to join an incumbent industry or create a new industry, generating the cutoffs and joining probabilities in Section~\ref{app:entry_cutoffs}.
+    \item Industry shares satisfy the Kolmogorov forward equations \eqref{eq:muM1_app}--\eqref{eq:mumn_app} with all time derivatives equal to zero.
+    \item The mass of industries evolves according to \(g_N=\gamma-\delta\).
+    \item The aggregate resource, labor-market, and asset-market clearing conditions hold.
+    \item The household Euler equation holds, so that along the balanced growth path
+    \[
+    g=r-\rho.
+    \]
+\end{enumerate}
+
+\section{Quantitative Details}
+
+\subsection{Numerical Equilibrium and Validation}
+
+I compute the stationary equilibrium on a finite state space. Monopoly states are \(M_{\hat s}\), with \(\hat s=1,\ldots,s_{\max}^M\), and oligopoly states are \(O_{mn}\), with \(m=0,\ldots,m_{\max}\) and \(n=1,\ldots,n_b\), where the follower bound \(n_b\) is set by a numerical cap \(n_{\max}\). When exact finite follower support is reached before the cap, \(n_b=n^*\). Otherwise \(n_b=n_{\max}\) and the follower dimension is a numerical truncation of potentially infinite support. At \(n=n_{\max}\), a joining event is treated as a self-transition, while the entry decision continues to enter \(\theta\) and \(\gamma\). The calibration, baseline, policy, and life-cycle calculations use
+\[
+(s_{\max}^M,m_{\max},n_{\max})=(30,80,30).
+\]
+The \(z\) and \(\hat{k}\) branches and the \(\sigma\) branch through \(\sigma=4.9\) use \((s_{\max}^M,m_{\max},n_{\max})=(30,80,60)\). For the upper-\(\sigma\) extension shown through \(\sigma=5.15\), I set \(m_{\max}=120\) after verifying overlap with the \(m_{\max}=80\) branch. Transitions back toward the interior remain active at the numerical boundaries.
+
+For each parameter vector, I first solve the static pricing problem. Conditional on innovation policies and joining probabilities, the normalized Bellman equations are linear systems with effective discount rate \(\rho+\gamma\). I solve these systems jointly across industry states, following the continuous-time numerical approach of \citet{AchdouHHLM22}. Because the model's state space is already discrete, this step does not require a finite-difference approximation. I update firm innovation rates and entrant cutoffs and iterate on these policies together with the outer fixed point in the creation rate \(\gamma\) and the neck-and-neck value \(v_{01}\).
+
+Let \(Q(x,\theta)\) denote the column generator of transitions among incumbent industry states, and let \(b_S(\theta)=z(1-\theta_S)\) denote the rate at which an entrant meeting state \(S\) creates a new industry. New industries enter state \(M_1\). The stationary distribution satisfies
+\[
+\left[Q(x,\theta)-\gamma I+e_{M_1}b(\theta)'\right]\mu=0,
+\qquad
+\mathbf{1}'\mu=1,
+\]
+where \(e_{M_1}\) is the unit vector associated with state \(M_1\). The creation-rate fixed point is
+\[
+\gamma=b(\theta)'\mu
+=
+z\left[
+(1-\theta^{M})\sum_{\hat{s}=1}^{s_{\max}^{M}}\mu^{M}_{\hat{s}}
++
+\sum_{n=1}^{n_b}\sum_{m=0}^{m_{\max}}
+(1-\theta_{mn})\mu_{mn}
+\right].
+\]
+I iterate until values, policies, entry probabilities, \(\gamma\), and \(\mu\) jointly converge. An equilibrium is retained only if the Bellman residuals, both aggregate growth identities, the creation-rate fixed point, and the normalization and nonnegativity of \(\mu\) satisfy their numerical tolerances. I also check stationary mass and flow balance at the follower, technology-gap, and monopoly boundaries. At the calibrated baseline, \(n^*=20<n_{\max}=30\), and the boundary diagnostics lie below their validation thresholds. For the comparative statics, I require stationary mass above the reference follower bound \(n=30\) to be at most \(10^{-4}\), follower-boundary mass and joining flow to be at most \(10^{-8}\), gap-boundary mass to be at most \(10^{-4}\), and monopoly-boundary mass to be at most \(10^{-3}\). Recomputing the comparative statics on the expanded follower grid provides an additional truncation check.
+
+\subsection{Calibration and Targeted Moments}\label{app:calibration}
+
+The external calibration of \(\rho\) and \(\delta\) is described in Section~\ref{subsec:calibration}. The remaining parameters are calibrated jointly.
+
+The internally calibrated parameters are
+\[
+\Theta=(\sigma,\lambda,\alpha,\psi,\hat k,z),
+\]
+where \(\sigma\) is the elasticity of substitution, \(\lambda\) is the innovation step size, \(\alpha\) and \(\psi\) govern R\&D costs, \(\hat k\) governs the mean market-initiation cost, and \(z\) is the arrival rate of potential entrants. For each candidate \(\Theta\), I solve the stationary equilibrium and compute model moments \(m(\Theta)\). The calibrated parameters solve
+\[
+\hat\Theta=\arg\min_{\Theta}\left(m(\Theta)-m^{data}\right)'W\left(m(\Theta)-m^{data}\right),
+\]
+where \(W\) is diagonal with \(W_{jj}=w_j/(m^{data}_j)^2\). Thus each moment enters as a weighted squared proportional deviation from its empirical target. In the order reported in Table~\ref{tab:moments}, the exact target vector and relative weights are
+\[
+\begin{aligned}
+m^{data}={}&(0.00856194,\ 0.41108900,\ 0.26404793,\\
+             &\phantom{(}0.02687500,\ 0.50574368,\ 0.08500000),\\
+w={}&(3,\ 3,\ 4,\ 3,\ 4,\ 1).
+\end{aligned}
+\]
+The markup target in this vector is the average markup net of one. I search over the bounds
+\[
+\begin{split}
+\sigma&\in[2.50,8.00],\qquad
+\lambda\in[1.0060,1.0500],\qquad
+\alpha\in[0.0100,0.2000],\\
+\psi&\in[1.10,2.20],\qquad
+\hat k\in[0.015,0.150],\qquad
+z\in[0.050,0.500].
+\end{split}
+\]
+I first conduct a global multistart search on a preliminary grid with \(m_{\max}=50\) and re-solve the leading candidates at the production tolerance. I refine three valid, dispersed starts by bound-constrained local search, then expand the gap grid to \(m_{\max}=80\) and refine the best basin. The reported estimate's outer fixed point is solved at tolerance \(10^{-6}\) and rechecked at \(2.5\times10^{-7}\), and at both passes the final policy fixed point and HJB residuals are validated at \(10^{-5}\). The estimate passes a cold 12-direction local stationarity poll at normalized radius \(10^{-5}\). No coordinate direction improves the objective by more than \(10^{-6}\). This procedure provides global exploration followed by local refinement, but it does not establish global uniqueness.
+
+The model counterpart of aggregate growth is the finite-state version of Proposition~\ref{prop:agggrowth},
+\[
+g(\Theta)=\ln\lambda\left(\gamma+\sum_{\hat s=1}^{s_{\max}^M}\mu^M_{\hat s}x^M_{\hat s}+\sum_{n=1}^{n_b}\sum_{m=1}^{m_{\max}}n x_{-mn}\mu_{mn}\right).
+\]
+The three terms are variety creation, monopolist innovation, and follower catch-up innovation.
+
+I report incumbent R\&D and market-initiation expenditure separately. The incumbent component is
+\[
+\mathcal R
+=\sum_{\hat s=1}^{s_{\max}^M}\mu^M_{\hat s}R(x^M_{\hat s})
++\sum_{n=1}^{n_b}(n+1)\mu_{0n}R(x_{0n})
++\sum_{n=1}^{n_b}\sum_{m=1}^{m_{\max}}\mu_{mn}
+\left[R(x_{mn})+nR(x_{-mn})\right],
+\]
+and the market-creation component is
+\[
+\mathcal K
+=z\sum_S\mu_S\int_{\underline\kappa}^{\hat\kappa_S}\kappa\,dG(\kappa),
+\]
+where \(S\) indexes industry states and \(\hat\kappa_S\) is the state-specific cutoff below which a potential entrant creates a new industry. The calibration maps their sum to measured R\&D,
+\[
+\frac{R\&D}{Y}=\mathcal R+\mathcal K.
+\]
+The interpretation is that \(\mathcal K\) measures resources used to develop and introduce new product markets, not generic regulatory or administrative setup costs.
+
+The model innovation-frequency moment averages annual innovation probabilities at the firm-state level. Let
+\[
+\bar F
+=\sum_{\hat s=1}^{s_{\max}^M}\mu^M_{\hat s}
++\sum_{n=1}^{n_b}\sum_{m=0}^{m_{\max}}(n+1)\mu_{mn}
+\]
+be the average number of active firms per industry. The model counterpart of the annual innovation frequency is
+\[
+\begin{split}
+I^{model}=\frac{1}{\bar F}\Bigg[&
+\sum_{\hat s=1}^{s_{\max}^M}\mu^M_{\hat s}
+\left(1-e^{-x^M_{\hat s}}\right)
++\sum_{n=1}^{n_b}(n+1)\mu_{0n}
+\left(1-e^{-x_{0n}}\right)\\
+&+\sum_{n=1}^{n_b}\sum_{m=1}^{m_{\max}}\mu_{mn}
+\left\{\left(1-e^{-x_{mn}}\right)
++n\left(1-e^{-x_{-mn}}\right)\right\}
++\gamma\Bigg].
+\end{split}
+\]
+At \(m=0\), all \(n+1\) firms are symmetric and use the common policy \(x_{0n}\). At \(m\geq1\), \(x_{mn}\) is the leader's innovation rate and \(x_{-mn}\) is each follower's innovation rate. Thus the Poisson transform is applied before aggregation. The term \(\gamma\) is added separately as the flow of market-creating innovations. It represents a new brand or product-market introduction, including one introduced by an existing firm. Leader innovations enter this frequency moment even when they do not enter the public-knowledge growth decomposition. The event flow \(\gamma\) is distinct from the resource expenditure \(\mathcal K\), which enters R\&D/GDP.
+
+The annual brand-entry moment is
+\[
+E^{model}
+=\sum_S\mu_S\frac{z}{F_S}
+=z\left[
+\sum_{\hat s=1}^{s_{\max}^M}\mu^M_{\hat s}
++\sum_{n=1}^{n_b}\sum_{m=0}^{m_{\max}}\frac{\mu_{mn}}{n+1}
+\right],
+\]
+where \(F_S=1\) in a monopoly and \(F_S=n+1\) in an oligopoly with \(n\) followers. This uses the potential-entrant arrival rate \(z\), not the new-industry creation rate \(\gamma\), because each potential entrant creates a new firm or brand either by joining an existing industry or by creating a new industry. Online Appendix Table B.II of \citet{ArgenteLM24} reports a sales-weighted average across firm-by-product-group cells and years. Since model industries have equal revenue under the normalization, the corresponding model object is the stationary-distribution-weighted average of the state-specific rates \(z/F_S\), not \(z\) divided by the average firm count. I match this object to the annual brand-entry rate of 0.085.
+
+The markup moments are computed from the model-implied static equilibrium in each industry state and aggregated using the stationary distribution. The model average markup is cost-weighted across active firms and enters the objective net of one. The empirical counterparts are constructed from Compustat over 2000--2016 using the output elasticities of \citet{DeLoeckerEU20}. For the dispersion moment, I residualize log markups on four-digit-industry and year fixed effects, compute the cost-weighted standard deviation of the residuals within each year, and average across years. This removes permanent cross-industry differences and aggregate year effects, making the target the empirical counterpart of the model's cross-sectional markup dispersion.
+
+\subsection{Comparative Statics and Policy Experiments}\label{app:discontinuities}
+
+The comparative-static branches begin at the calibrated equilibrium and proceed by parameter continuation. Each accepted equilibrium provides the initial values and policies for the next requested point. If a requested step fails, the algorithm introduces intermediate bridge points and reduces the step size. These bridge points aid convergence but are not reported. The state-space choices are those described above, and every reported point must pass the equilibrium and boundary checks described above.
+
+The policy branches proceed from the zero-subsidy equilibrium in the same way. Fiscal expenditure is evaluated in the stationary equilibrium. For the equal-cost comparison, I first bracket the subsidy rate that costs one percent of output and then solve within that bracket. The comparative-static and policy figures compare stationary equilibria at the same initial public knowledge stock and express balanced-growth-path welfare changes in consumption-equivalent terms as
+\[
+100\left[\exp\!\left\{\rho\left(W^{cf}-W^0\right)\right\}-1\right].
+\]
+
+\subsection{Numerical Welfare Derivatives}
+
+All welfare comparisons hold the initial public knowledge level fixed and recompute initial output from the stationary composition of each counterfactual equilibrium. To evaluate the constrained-efficiency margin, I reduce a state's joining probability by \(10^{-3}\), fully re-solve the equilibrium, and form a one-sided numerical derivative. I evaluate the monopoly margin and oligopoly states whose stationary mass is at least \(10^{-3}\) and whose joining probability permits the perturbation. These restrictions yield the 33 evaluated states, which underlie the mass shares reported in Section~\ref{subsec:quant_planner}.
+
+\subsection{Life-Cycle Profiles}\label{app:lifecycle}
+
+To construct life-cycle profiles, I follow a cohort of industries using the transition process implied by the stationary equilibrium. The active state space is
+\[
+\mathcal X=\{M_1,\ldots,M_{s_{\max}^M}\}\cup\{O_{mn}:m=0,\ldots,m_{\max},\ n=1,\ldots,n_b\}.
+\]
+
+The reported profiles start from the newborn monopoly state \(M_1\). Let \(\omega(t)\) denote the column vector giving the distribution of this cohort over active states at age \(t\), conditional on survival. Using the same column-generator convention as above, the cohort law of motion is
+\[
+\dot{\omega}(t)=Q(x,\theta)\omega(t),
+\qquad
+\omega(0)=e_{M_1},
+\]
+where \(e_{M_1}\) puts unit mass on \(M_1\). The matrix \(Q(x,\theta)\) describes transitions among active states for a given industry and is distinct from the stationary equations for industry shares, which also include creation and dilution. I integrate the system by forward Euler with \(dt=0.1\), using substeps when needed to keep transition weights nonnegative, and renormalize the cohort distribution conditional on survival.
+
+For state variables that depend only on the current state, the expected age profile is
+\[
+\mathbb E[A_t\mid M_1,\text{ survival to }t]=\sum_{x\in\mathcal X}\omega_x(t)A(x).
+\]
+This formula applies directly to the number of firms. The reported innovation profile uses the total innovation intensity within an industry,
+\[
+\iota(M_{\hat s})=x^M_{\hat s},
+\qquad
+\iota(O_{0n})=(n+1)x_{0n},
+\qquad
+\iota(O_{mn})=x_{mn}+n x_{-mn}
+\quad\text{for }m\geq1.
+\]
+It therefore differs from the firm-level annual innovation-frequency moment used in the calibration. For output and prices, the implementation also tracks cumulative productivity growth along the cohort path and applies the corresponding technology adjustment to the static state-level objects.
+
+Let \(Y_i^{\mathrm{actual}}(t)\) denote expected cohort output when the mass of industries follows its equilibrium growth path. Since \(g_N=\gamma-\delta\), output holding the mass of industries fixed removes the associated revenue-share dilution and is given by
+\[
+Y_i^{N\mathrm{\ fixed}}(t)
+=e^{g_Nt}Y_i^{\mathrm{actual}}(t).
+\]
+The reported price series is adjusted for wage growth. Both output series and the price series are normalized to one at age zero. The industry innovation series is normalized to its value at the first simulated age, \(t=0.1\).
+
+\end{document}
